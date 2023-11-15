@@ -1,16 +1,18 @@
 import requests
 import pandas as pd
 
-df = pd.read_csv('worldcities.csv')
-citylist = df.city
+def getresults(cityCount):
+    df = pd.read_csv('worldcities.csv')
+    citylist = df.city
 
-N = 3
-result = citylist[:N]
+    city = citylist[cityCount]
+    eachcity(city, cityCount)
 
-print(result)
-for cities in result:
-    url_string = "http://www.reddit.com/r/"+ cities + "/search.json?q=test&count=5&restrict_sr=on"
-    print(url_string)
+def eachcity(city,cityCount):
+    url_string = "http://www.reddit.com/r/"+ city + "/search.json?q=test&count=5&restrict_sr=on"
+    #url_string_test = "http://www.reddit.com/r/london/search.json?q=test&count=5&restrict_sr=on"
+
+    # print(url_string)
     url = url_string
 
     payload = {}
@@ -19,5 +21,9 @@ for cities in result:
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
+    cityCount + 1
+    getresults(cityCount)
 
-    print(response.text)
+
+citycount = 0
+getresults(citycount)
