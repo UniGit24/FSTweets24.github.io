@@ -19,7 +19,7 @@ def main(fig):
     data = data[data.longitude >= 0]
 
     # Create scatter map
-    fig = px.scatter_geo(data, lat='latitude', lon='longitude', hover_name = 'searched_hashtag_country', color = 'severity', title='Mapped Security Threats')
+    fig = px.scatter_geo(data, lat='latitude', lon='longitude', hover_name = 'searched_hashtag_country', hover_data = 'tweet_text', title='Mapped Security Threats')
     #fig = px.scatter_mapbox(data, lat="latitude", lon="longitude",color="severity", size="severity", color_continuous_scale=px.colors.cyclical.IceFire, size_max=20,zoom=12)
     fig.show()
 
