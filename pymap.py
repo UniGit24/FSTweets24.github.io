@@ -16,7 +16,7 @@ def main(fig):
 
     # Drop rows with missing or invalid values in the 'longitude' column
     data = data.dropna(subset=['longitude'])
-    data = data[data.longitude >= 0]
+    #data = data[data.longitude >= 0]
 
     # Create scatter map
     fig = px.scatter_geo(data, lat='latitude', lon='longitude', hover_name = 'searched_hashtag_country', hover_data = 'tweet_text', title='Mapped Security Threats')
