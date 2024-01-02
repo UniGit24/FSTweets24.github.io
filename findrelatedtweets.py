@@ -5,6 +5,7 @@ import torch.nn.functional as F
 from torch import Tensor
 from transformers import AutoTokenizer, AutoModel
 import numpy as np
+import csv
 
 
 def average_pool(last_hidden_states: Tensor,
@@ -55,14 +56,41 @@ def main(fig):
                 #df3 = df3.remove(next(i for i in df3 if x in i))
                 #df3.pop(index)
                 #df3.pop(x)
-    arr1 = np.array(['tweet_text',arr])
-    arr2 = np.array(['latitude',lat])
-    arr3 = np.array(['longitude',lon])
 
-    fin_array = np.stack((arr1, arr2, arr3), axis=1)
-    print(fin_array)
+    d = {'text': arr, 'lat': lat, 'lon':lon}
+    fdf = pd.DataFrame(data=d)
+    print(fdf)
 
-    fig = px.scatter_geo(fin_array, lat='latitude', lon='longitude', hover_data = 'tweet_text', title='Map')
+    #fields = ["tweet_text","latitude","longitude"]  
+    #columns = [arr,lat,lon]  
+    #filename = "newcsv2.csv"
+    #count = len(arr)
+    #for x in range (0,count):
+      #      csvwriter = csv.writer(csvfile) 
+       #     csvwriter.writerow(fields) 
+       #     new_array = []
+       #     print(arr[x])
+       #     new_tweet = arr[x]
+       #     new_lat = lat[x]
+        #    new_lon = lon[x]
+        #    new_array.append(new_tweet)
+        #    new_array.append(new_lat)
+        #    new_array.append(new_lon)
+        #    csvwriter.writerow(new_array) 
+
+
+   # arr1 = np.array([arr], dtype=object)
+   # arr2 = np.array([lat], dtype=object)
+   # arr3 = np.array([lon], dtype=object)
+   # count = len(arr1)
+   # result = []
+   # for x in range (0,count):
+    #    result.append([arr1,arr2,arr3])
+    #fin_array = np.stack((arr1, arr2, arr3), axis=1)
+   # print(result)
+   # data = pd.read_csv(filename)
+
+    fig = px.scatter_geo(fdf, lat='lat', lon='lon', hover_data = 'text', title='Map')
 
     #fig = px.scatter_geo(df3, lat='latitude', lon='longitude', hover_name = 'searched_hashtag_country', hover_data = 'tweet_text', title='Map')
     fig.show()
