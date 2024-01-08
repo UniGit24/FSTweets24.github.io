@@ -37,3 +37,33 @@ btn.pack(side = 'top')
  
 root.mainloop()
 
+
+
+
+
+root = Tk()              
+root.geometry("750x150") 
+btn = Button(root, text = 'Australia', command = showmap("Australia")) 
+btn.place(x=325, y=50)
+btn = Button(root, text = 'Brazil', command = showmap("Brazil")) 
+btn.place(x=325, y=60)
+btn = Button(root, text = 'Canada', command = showmap("Canada")) 
+btn.place(x=325, y=70)
+btn = Button(root, text = 'France', command = showmap("France")) 
+btn.place(x=325, y=80)
+btn = Button(root, text = 'Germany', command = showmap("Germany")) 
+btn.place(x=325, y=90)
+btn = Button(root, text = 'India', command = showmap("India")) 
+btn.place(x=325, y=100)
+btn = Button(root, text = 'Italy', command = showmap("Italy")) 
+btn.place(x=325, y=110)
+btn = Button(root, text = 'Mexico', command = showmap("Mexico")) 
+btn.place(x=325, y=120)
+btn = Button(root, text = 'Ukraine', command = showmap("Ukraine")) 
+btn.place(x=325, y=130)
+btn = Button(root, text = 'United States', command = showmap("United States")) 
+btn.place(x=325, y=140)
+
+#btn.pack(side = 'top')    
+ 
+root.mainloop()
