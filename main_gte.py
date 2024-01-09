@@ -32,6 +32,7 @@ def detector(topic,tweet):
     scores = (embeddings[:1] @ embeddings[1:].T) * 100
     return (scores)
 
+    
 def main(country):
     #df = pd.read_csv('August21Data.csv')
     df = pd.read_csv('Book2.csv')
@@ -41,11 +42,12 @@ def main(country):
     lat = df3["latitude"]
     lon = df3["longitude"]
     for index, x in enumerate(arr, start=1): 
-        topic = "attack"
+        topic = "President Biden calls for Governer Cuomo to resign"
         tweet = x
         score = detector(topic,tweet)
+        print(score)
         for y in score:
-            if y < 75:
+            if y > 75:
                 arr.pop(index)
                 lat.pop(index)
                 lon.pop(index)
@@ -56,13 +58,6 @@ def main(country):
     fig = px.scatter_geo(fdf, lat='lat', lon='lon', hover_data = 'text', title='Map')
     fig.show()
 
-
-def showmap(country):
-    window = Toplevel(window)
-    window.title("Map")
-    
-    fig = px.scatter_geo()
-    main(fig,country)
 
 from tkinter import *
 from tkinter import ttk 

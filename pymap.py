@@ -67,3 +67,10 @@ btn.place(x=325, y=140)
 #btn.pack(side = 'top')    
  
 root.mainloop()
+
+def showmap(country):
+    window = Toplevel(window)
+    window.title("Map")
+    
+    fig = px.scatter_geo()
+    main(fig,country)
