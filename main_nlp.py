@@ -39,7 +39,7 @@ def main(country):
         score = sentance_similarily(topic,tweet)
         print(score)
         for y in score:
-            if y > 75:
+            if y < 0.05:
                 arr.pop(index)
                 lat.pop(index)
                 lon.pop(index)

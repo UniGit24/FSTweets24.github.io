@@ -41,20 +41,63 @@ def main(country):
     arr = df3["tweet_text"]
     lat = df3["latitude"]
     lon = df3["longitude"]
+    print(arr)
+    new_arr = []
+    new_lat = []
+    new_lon = []
+   # d = {'text': [], 'lat': [], 'lon':[]}
     for index, x in enumerate(arr, start=1): 
-        topic = "President Biden calls for Governer Cuomo to resign"
+        topic = "Christians religion about god"
         tweet = x
         score = detector(topic,tweet)
         print(score)
+        index_list = []
         for y in score:
-            if y > 75:
-                arr.pop(index)
-                lat.pop(index)
-                lon.pop(index)
-
-    d = {'text': arr, 'lat': lat, 'lon':lon}
+            #if y>80:
+            #    print()
+            #    d["text"].append(x)
+            #    latitude = lat[index]
+            #    print(latitude)
+            #    d["lat"].append(lat[index])
+            #    d["lon"].append(lon[index])
+            if y > 80:
+                #print(index)
+                #index_list.append(index)
+                temp_index = index - 1
+                new_arr.append(arr[temp_index])
+                new_lat.append(lat[temp_index])
+                new_lon.append(lon[temp_index])
+                #lat[len(lat) - index] = " "
+                #lon[len(lon) - index] = " "
+                #print(index)
+                #del arr[index]
+                #del lat[index]
+                #del lon[index]
+                #arr.pop(index)
+                #lat.pop(index)
+                #lon.pop(index)
+    print(new_lat)
+    #for index, x in enumerate(arr, start=1): 
+        #for y in index_list:
+            #if y == index:
+                #print(index)
+               # print(y)
+               # temp_index = index - 1
+              #  print(temp_index)
+              #  print(arr[temp_index])
+              #  new_arr.append(arr[temp_index])
+              #  new_lat.append(lat[temp_index])
+              #  new_lon.append(lon[temp_index])
+    #for x in index_list:
+    #    temp_index = x - 1
+    #    new_arr.append(arr[temp_index])
+    #    new_lat.append(lat[temp_index])
+    #    new_lon.append(lon[temp_index])
+    d = {'text': new_arr, 'lat': new_lat, 'lon': new_lon}
     fdf = pd.DataFrame(data=d)
     print(len(arr))
+    fdf = fdf.dropna(subset=['lon'])
+    print(fdf)
     fig = px.scatter_geo(fdf, lat='lat', lon='lon', hover_data = 'text', title='Map')
     fig.show()
 
