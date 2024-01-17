@@ -54,6 +54,7 @@ def main(country):
         #topic = "the spirit of god"
         tweet = x
         score = detector(topic,tweet)
+        print(score)
         index_list = []
         for y in score:
             #if y>80:
@@ -67,8 +68,8 @@ def main(country):
                 new_arr.append(arr[temp_index])
                 new_lat.append(lat[temp_index])
                 new_lon.append(lon[temp_index])
-                temp_score = y-80
-                new_score.append(-temp_score.item())
+                temp_score = y
+                new_score.append(temp_score.item())
     #for index, x in enumerate(arr, start=1): 
         #for y in index_list:
             #if y == index:
