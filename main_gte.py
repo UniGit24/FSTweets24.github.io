@@ -8,6 +8,8 @@ import numpy as np
 import csv
 import tkinter as tk 
 from tkinter import ttk 
+import plotly.graph_objects as go
+
 
 
 def average_pool(last_hidden_states: Tensor,
@@ -34,8 +36,8 @@ def detector(topic,tweet):
 
     
 def main(country):
-    #df = pd.read_csv('August21Data.csv')
-    df = pd.read_csv('Book2.csv')
+    df = pd.read_csv('August21Data.csv')
+    #df = pd.read_csv('Book2.csv')
     df2 = df[df['searched_hashtag_country'] == country]
     df3 = df2[["id","searched_hashtag_country","tweet_text","latitude","longitude"]]
     arr = df3["tweet_text"]
@@ -45,12 +47,13 @@ def main(country):
     new_arr = []
     new_lat = []
     new_lon = []
+    new_score = []
    # d = {'text': [], 'lat': [], 'lon':[]}
     for index, x in enumerate(arr, start=1): 
-        topic = "Christians religion about god"
+        topic = "Victoria to enter sixth lockdown"
+        #topic = "the spirit of god"
         tweet = x
         score = detector(topic,tweet)
-        print(score)
         index_list = []
         for y in score:
             #if y>80:
@@ -60,23 +63,12 @@ def main(country):
             #    print(latitude)
             #    d["lat"].append(lat[index])
             #    d["lon"].append(lon[index])
-            if y > 80:
-                #print(index)
-                #index_list.append(index)
                 temp_index = index - 1
                 new_arr.append(arr[temp_index])
                 new_lat.append(lat[temp_index])
                 new_lon.append(lon[temp_index])
-                #lat[len(lat) - index] = " "
-                #lon[len(lon) - index] = " "
-                #print(index)
-                #del arr[index]
-                #del lat[index]
-                #del lon[index]
-                #arr.pop(index)
-                #lat.pop(index)
-                #lon.pop(index)
-    print(new_lat)
+                temp_score = y-80
+                new_score.append(-temp_score.item())
     #for index, x in enumerate(arr, start=1): 
         #for y in index_list:
             #if y == index:
@@ -93,13 +85,35 @@ def main(country):
     #    new_arr.append(arr[temp_index])
     #    new_lat.append(lat[temp_index])
     #    new_lon.append(lon[temp_index])
-    d = {'text': new_arr, 'lat': new_lat, 'lon': new_lon}
-    fdf = pd.DataFrame(data=d)
-    print(len(arr))
-    fdf = fdf.dropna(subset=['lon'])
-    print(fdf)
-    fig = px.scatter_geo(fdf, lat='lat', lon='lon', hover_data = 'text', title='Map')
+    d = {'text': new_arr, 'lat': new_lat, 'lon': new_lon, 'score': new_score}
+
+    with open("test.csv", "w") as outfile:
+        writer = csv.writer(outfile)
+        key_list = list(d.keys())
+        limit = len(key_list)
+        writer.writerow(d.keys())
+        for i in range(limit):
+            writer.writerow([d[x][i] for x in key_list])
+    dt = pd.read_csv('test.csv')
+    print(dt)
+    #fig = go.Figure(data=go.Scattergeo(lon = dt['lon'],lat = dt['lat'],text = dt['text'], mode = 'markers',size = dt['score']))
+    fig = px.scatter_geo(dt, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
+
+    if (country == 'United States'): 
+        fig.update_layout(
+            title = 'Tweets found',
+            geo_scope='usa',
+        )
+    if (country == 'Australia'): 
+        fig.update_layout(
+            title = 'Tweets found',
+            geo_scope='world',
+        )
     fig.show()
+    fig.write_html("austweet1.html")
+    #fdf = pd.DataFrame(data=d)
+    #fig = px.scatter_geo(fdf, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
+    #fig.show()
 
 
 from tkinter import *
