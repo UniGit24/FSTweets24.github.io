@@ -36,8 +36,8 @@ def detector(topic,tweet):
 
     
 def main(country):
-    df = pd.read_csv('August21Data.csv')
-    #df = pd.read_csv('Book2.csv')
+    #df = pd.read_csv('August21Data.csv')
+    df = pd.read_csv('Book2.csv')
     df2 = df[df['searched_hashtag_country'] == country]
     df3 = df2[["id","searched_hashtag_country","tweet_text","latitude","longitude"]]
     arr = df3["tweet_text"]
@@ -57,7 +57,7 @@ def main(country):
         print(score)
         index_list = []
         for y in score:
-            #if y>80:
+            if y>75:
             #    print()
             #    d["text"].append(x)
             #    latitude = lat[index]
@@ -86,29 +86,55 @@ def main(country):
     #    new_arr.append(arr[temp_index])
     #    new_lat.append(lat[temp_index])
     #    new_lon.append(lon[temp_index])
-    d = {'text': new_arr, 'lat': new_lat, 'lon': new_lon, 'score': new_score}
-
-    with open("test.csv", "w") as outfile:
-        writer = csv.writer(outfile)
-        key_list = list(d.keys())
-        limit = len(key_list)
-        writer.writerow(d.keys())
-        for i in range(limit):
-            writer.writerow([d[x][i] for x in key_list])
-    dt = pd.read_csv('test.csv')
-    print(dt)
+    d = {"text": new_arr, "lat": new_lat, "lon": new_lon, "score": new_score}
+    d_columns = ['text', 'lat', 'lon', 'score']
+    tweetsfound = len(new_arr)
+    classA = pd.DataFrame(
+    d
+    )
+    print(classA)
+#save dataframe to csv file
+   # classA.to_csv("student.csv", index=False)
+    #print(d)
+    #with open("test.csv", "w") as outfile:
+       # linker = csv.DictWriter(outfile, fieldnames = d_columns)
+        #linker.writeheader()
+        #for x in d_columns:
+        #    linker.writerow(x)
+        #writer = csv.DictWriter(outfile, fieldnames=d_columns)
+       # writer.writeheader()
+       # for data in d:
+        #    writer.writerow(data)
+        #w = csv.DictWriter(outfile, d.keys())
+        #w.writeheader()
+        #w.writerow(d)
+        #writer = csv.writer(outfile)
+        #key_list = list(d.keys())
+        #limit = len(d)
+        #writer.writerow(d.keys())
+        #for i in range(limit):
+            #writer.writerow([d[x][i] for x in key_list])
+    #dt = pd.read_csv('test.csv')
+    #print(dt)
     #fig = go.Figure(data=go.Scattergeo(lon = dt['lon'],lat = dt['lat'],text = dt['text'], mode = 'markers',size = dt['score']))
-    fig = px.scatter_geo(dt, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
+    #fig = px.scatter_geo(dt, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
+
+    fig = px.scatter_geo(classA, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
 
     if (country == 'United States'): 
         fig.update_layout(
-            title = 'Tweets found',
+            title = ("Tweets found: {}".format(tweetsfound)),
             geo_scope='usa',
         )
     if (country == 'Australia'): 
         fig.update_layout(
-            title = 'Tweets found',
+            title = ("Tweets found: {}".format(tweetsfound)),
             geo_scope='world',
+        )
+    if (country == 'Canada'):
+        fig.update_layout(
+            title = ("Tweets found: {}".format(tweetsfound)),
+            geo_scope='north america',
         )
     fig.show()
     fig.write_html("austweet1.html")
