@@ -120,7 +120,7 @@ def main(country):
     #fig = px.scatter_geo(dt, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
 
     fig = px.scatter_geo(classA, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
-
+    #country selecter
     if (country == 'United States'): 
         fig.update_layout(
             title = ("Tweets found: {}".format(tweetsfound)),
@@ -131,7 +131,7 @@ def main(country):
             title = ("Tweets found: {}".format(tweetsfound)),
             geo_scope='world',
         )
-    if (country == 'Canada'):
+    if (country == 'Canada'):   
         fig.update_layout(
             title = ("Tweets found: {}".format(tweetsfound)),
             geo_scope='north america',
