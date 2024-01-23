@@ -11,7 +11,6 @@ from tkinter import ttk
 import plotly.graph_objects as go
 
 
-
 def average_pool(last_hidden_states: Tensor,
                  attention_mask: Tensor) -> Tensor:
     last_hidden = last_hidden_states.masked_fill(~attention_mask[..., None].bool(), 0.0)
@@ -53,7 +52,10 @@ def main(country):
         topic = "Victoria to enter sixth lockdown"
         #topic = "the spirit of god"
         tweet = x
-        score = detector(topic,tweet)
+        try:
+            score = detector(topic,tweet)
+        except:
+            index = index + 1
         print(score)
         index_list = []
         for y in score:
@@ -69,7 +71,7 @@ def main(country):
                 new_lat.append(lat[temp_index])
                 new_lon.append(lon[temp_index])
                 temp_score = y
-                new_score.append(temp_score.item())
+                new_score.append(((temp_score.item()-75)*5))
     #for index, x in enumerate(arr, start=1): 
         #for y in index_list:
             #if y == index:
