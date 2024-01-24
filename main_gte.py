@@ -127,17 +127,17 @@ def main(country, topic, file, date):
     #country selecter
     if (country == 'United States'): 
         fig.update_layout(
-            title = ("Tweets found: {}".format(tweetsfound)),
+            title = (date + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='usa',
         )
     if (country == 'Australia'): 
         fig.update_layout(
-            title = ("Tweets found: {}".format(tweetsfound)),
+            title = (date + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='world',
         )
     if (country == 'Canada'):   
         fig.update_layout(
-            title = (date + " Tweets found: {}".format(tweetsfound)),
+            title = (date + topic + " Tweets found: {}".format(tweetsfound)),
             geo_scope='north america',
         )
     fig.show()
@@ -147,16 +147,47 @@ def main(country, topic, file, date):
     #fig.show()
 
 def initialiser (country):
-    topic = "Victoria to enter sixth lockdown"
-    file = 'August21Data.csv'
-    date = 'August 21'
-    main(country, topic, file, date)
-    file = '2021_July_twitter_trending_data.csv'
-    date = 'July 21'
-    main(country, topic, file, date)
-    file = '2021_June_twitter_trending_data.csv'
-    date = 'June 21'
-    main(country, topic, file, date)
+    Australia_topics = ["Victoria to enter sixth lockdown","26 June – Greater Sydney, Wollongong, Blue Mountains and the Central Coast are placed into lockdown as the Delta variant of COVID-19 spreads.", " 11 July – Australia records its first death from the COVID-19 pandemic for 2021,as Sydney records 77 cases of community transmission.", "16 July – Melbourne enters snap lockdown with 18 cases of COVID-19.", "21 August – New South Wales records the highest daily COVID-19 case numbers in Australia thus far, recording 825 new cases of COVID-19.","25 August – New South Wales records 1,029 new cases of COVID-19 in 24 hours becoming the first state in Australia to surpass the 1,000 daily case milestone."]
+    USA_topics = ["June 1 - SARS-CoV-2 Delta variant becomes the dominant strain of COVID-19 in the United States", "June 1 - COVID-19 vaccines – Moderna seeks full approval from the FDA for the Moderna COVID-19 vaccine", "June 5 – Aftermath of the January 6 United States Capitol attack – The Department of Justice says that over 465 people have been arrested since the January 6 attack. It is also seeking information on 250 other suspects.", "July 20 - Tom Barrack, founder of Colony Capital and an advisor of Donald Trump, is indicted for making false statements to the FBI and being an unregistered agent for the United Arab Emirates.", "August 2 - COVID-19 vaccination: Over 70% of adults are reported to have received at least one dose of a COVID-19 vaccine.", "August 10 - New York Governor Andrew Cuomo announces he will resign effective August 24 after an inquiry found he sexually harassed multiple women.", "August 29 - Hurricane Ida makes landfall at 11:55am CDT near Port Fourchon, Louisiana, on the 16th anniversary of Hurricane Katrina."]
+    Canada_topics = ["June 21 – The Government of Canada announces the first phase to easing the COVID-19 border measures for travellers,[22] thus lifting quarantine requirements for fully immunised travellers starting on July 5", "June 30 - Dozens of people have died amid an unprecedented heatwave that has smashed temperature records.", "July 20 – British Columbia declares a state of emergency in response to the 2021 British Columbia wildfires.", "August 2 -  SARS-CoV-2 Delta variant becomes the pre-dominant strain of COVID-19 in Canada."]
+    if (country == 'Australia'): 
+        for topic in Australia_topics:
+            #topic = "Victoria to enter sixth lockdown"
+            file = 'August21Data.csv'
+            date = 'August 21'
+            main(country, topic, file, date)
+            file = '2021_July_twitter_trending_data.csv'
+            date = 'July 21'
+            main(country, topic, file, date)
+            file = '2021_June_twitter_trending_data.csv'
+            date = 'June 21'
+            main(country, topic, file, date)
+
+    if (country == 'Canada'): 
+        for topic in Canada_topics:
+            #topic = "Victoria to enter sixth lockdown"
+            file = 'August21Data.csv'
+            date = 'August 21'
+            main(country, topic, file, date)
+            file = '2021_July_twitter_trending_data.csv'
+            date = 'July 21'
+            main(country, topic, file, date)
+            file = '2021_June_twitter_trending_data.csv'
+            date = 'June 21'
+            main(country, topic, file, date)
+
+    if (country == 'United States'): 
+        for topic in USA_topics:
+            #topic = "Victoria to enter sixth lockdown"
+            file = 'August21Data.csv'
+            date = 'August 21'
+            main(country, topic, file, date)
+            file = '2021_July_twitter_trending_data.csv'
+            date = 'July 21'
+            main(country, topic, file, date)
+            file = '2021_June_twitter_trending_data.csv'
+            date = 'June 21'
+            main(country, topic, file, date)
 
 
 from tkinter import *
