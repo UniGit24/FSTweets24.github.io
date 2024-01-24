@@ -151,6 +151,13 @@ def initialiser (country):
     file = 'August21Data.csv'
     date = 'August 21'
     main(country, topic, file, date)
+    file = '2021_July_twitter_trending_data.csv'
+    date = 'July 21'
+    main(country, topic, file, date)
+    file = '2021_June_twitter_trending_data.csv'
+    date = 'June 21'
+    main(country, topic, file, date)
+
 
 from tkinter import *
 from tkinter import ttk 
