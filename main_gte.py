@@ -34,9 +34,11 @@ def detector(topic,tweet):
     return (scores)
 
     
-def main(country):
+def main(country, topic, file, date):
+    print(country, topic, file, date)
     #df = pd.read_csv('August21Data.csv')
-    df = pd.read_csv('Book2.csv')
+    #df = pd.read_csv('Book2.csv')
+    df = pd.read_csv(file)
     df2 = df[df['searched_hashtag_country'] == country]
     df3 = df2[["id","searched_hashtag_country","tweet_text","latitude","longitude"]]
     arr = df3["tweet_text"]
@@ -49,7 +51,7 @@ def main(country):
     new_score = []
    # d = {'text': [], 'lat': [], 'lon':[]}
     for index, x in enumerate(arr, start=1): 
-        topic = "Victoria to enter sixth lockdown"
+        #topic = "Victoria to enter sixth lockdown"
         #topic = "the spirit of god"
         tweet = x
         try:
@@ -59,7 +61,7 @@ def main(country):
         print(score)
         index_list = []
         for y in score:
-            if y>75:
+            if y>80:
             #    print()
             #    d["text"].append(x)
             #    latitude = lat[index]
@@ -135,7 +137,7 @@ def main(country):
         )
     if (country == 'Canada'):   
         fig.update_layout(
-            title = ("Tweets found: {}".format(tweetsfound)),
+            title = (date + " Tweets found: {}".format(tweetsfound)),
             geo_scope='north america',
         )
     fig.show()
@@ -144,6 +146,11 @@ def main(country):
     #fig = px.scatter_geo(fdf, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
     #fig.show()
 
+def initialiser (country):
+    topic = "Victoria to enter sixth lockdown"
+    file = 'August21Data.csv'
+    date = 'August 21'
+    main(country, topic, file, date)
 
 from tkinter import *
 from tkinter import ttk 
@@ -155,7 +162,8 @@ def clear():
 	combo.set('') 
         
 def get_index(*arg): 
-    main(str(var.get()))
+    
+    initialiser(str(var.get()))
 
 months = ('Australia', 
 						'Brazil', 
