@@ -128,20 +128,20 @@ def main(country, topic, file, date):
     if (country == 'United States'): 
         fig.update_layout(
             title = (date + topic + "Tweets found: {}".format(tweetsfound)),
-            geo_scope='usa',
+            geo_scope='usa'
         )
     if (country == 'Australia'): 
         fig.update_layout(
             title = (date + topic + "Tweets found: {}".format(tweetsfound)),
-            geo_scope='world',
+            geo_scope='world'
         )
     if (country == 'Canada'):   
         fig.update_layout(
             title = (date + topic + " Tweets found: {}".format(tweetsfound)),
-            geo_scope='north america',
+            geo_scope='north america'
         )
     fig.show()
-    fig.write_html("austweet1.html")
+    #fig.write_html("austweet1.html")
     #fdf = pd.DataFrame(data=d)
     #fig = px.scatter_geo(fdf, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
     #fig.show()
