@@ -49,6 +49,7 @@ def main(country, topic, file, date):
     new_lat = []
     new_lon = []
     new_score = []
+    temp_no_scores = 0
    # d = {'text': [], 'lat': [], 'lon':[]}
     for index, x in enumerate(arr, start=1): 
         #topic = "Victoria to enter sixth lockdown"
@@ -58,6 +59,7 @@ def main(country, topic, file, date):
             score = detector(topic,tweet)
         except:
             index = index + 1
+        temp_no_scores = temp_no_scores +1
         print(score)
         index_list = []
         for y in score:
@@ -127,17 +129,17 @@ def main(country, topic, file, date):
     #country selecter
     if (country == 'United States'): 
         fig.update_layout(
-            title = (date + topic + "Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + temp_no_scores + " Date: " + date + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='usa'
         )
     if (country == 'Australia'): 
         fig.update_layout(
-            title = (date + topic + "Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + temp_no_scores + " Date: " + date + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='world'
         )
     if (country == 'Canada'):   
         fig.update_layout(
-            title = (date + topic + " Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + temp_no_scores + " Date: " + date + " " + topic + " Tweets found: {}".format(tweetsfound)),
             geo_scope='north america'
         )
     fig.show()
