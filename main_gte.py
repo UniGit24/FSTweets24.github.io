@@ -129,17 +129,17 @@ def main(country, topic, file, date):
     #country selecter
     if (country == 'United States'): 
         fig.update_layout(
-            title = ("Number of tweets:" + temp_no_scores + " Date: " + date + " " + topic + "Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='usa'
         )
     if (country == 'Australia'): 
         fig.update_layout(
-            title = ("Number of tweets:" + temp_no_scores + " Date: " + date + " " + topic + "Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='world'
         )
     if (country == 'Canada'):   
         fig.update_layout(
-            title = ("Number of tweets:" + temp_no_scores + " Date: " + date + " " + topic + " Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='north america'
         )
     fig.show()
