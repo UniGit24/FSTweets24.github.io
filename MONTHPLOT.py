@@ -38,13 +38,13 @@ ylabel('Number of tweets found')
 show()
 
 #FIND AS A PERCENTAGE OF TOTAL TWEETS THE ONES ABOVE 80    
-tweet1 = [percentage_june[7],percentage_july[7],percentage_august[7],percentage_september[7],percentage_october[7]]
-tweet2 = [percentage_june[8],percentage_july[8],percentage_august[8],percentage_september[8],percentage_october[8]]
-tweet3 = [percentage_june[9],percentage_july[9],percentage_august[9],percentage_september[9],percentage_october[9]]
-tweet4 = [percentage_june[10],percentage_july[10],percentage_august[10],percentage_september[10],percentage_october[10]]
-tweet5 = [percentage_june[11],percentage_july[11],percentage_august[11],percentage_september[11],percentage_october[11]]
-tweet6 = [percentage_june[12],percentage_july[12],percentage_august[12],percentage_september[12],percentage_october[12]]
-tweet7 = [percentage_june[13],percentage_july[13],percentage_august[13],percentage_september[13],percentage_october[13]]
+tweet7 = [percentage_june[7],percentage_july[7],percentage_august[7],percentage_september[7],percentage_october[7]]
+tweet8 = [percentage_june[8],percentage_july[8],percentage_august[8],percentage_september[8],percentage_october[8]]
+tweet9 = [percentage_june[9],percentage_july[9],percentage_august[9],percentage_september[9],percentage_october[9]]
+tweet10 = [percentage_june[10],percentage_july[10],percentage_august[10],percentage_september[10],percentage_october[10]]
+tweet11 = [percentage_june[11],percentage_july[11],percentage_august[11],percentage_september[11],percentage_october[11]]
+tweet12 = [percentage_june[12],percentage_july[12],percentage_august[12],percentage_september[12],percentage_october[12]]
+tweet13 = [percentage_june[13],percentage_july[13],percentage_august[13],percentage_september[13],percentage_october[13]]
 
 months = range(1, 6)
 
@@ -61,10 +61,10 @@ ylabel('Number of tweets found')
 show()
 
 #FIND AS A PERCENTAGE OF TOTAL TWEETS THE ONES ABOVE 80    
-tweet1 = [percentage_june[14],percentage_july[14],percentage_august[14],percentage_september[14],percentage_october[14]]
-tweet2 = [percentage_june[15],percentage_july[15],percentage_august[15],percentage_september[15],percentage_october[15]]
-tweet3 = [percentage_june[16],percentage_july[16],percentage_august[16],percentage_september[16],percentage_october[16]]
-tweet4 = [percentage_june[17],percentage_july[17],percentage_august[17],percentage_september[17],percentage_october[17]]
+tweet14 = [percentage_june[14],percentage_july[14],percentage_august[14],percentage_september[14],percentage_october[14]]
+tweet15 = [percentage_june[15],percentage_july[15],percentage_august[15],percentage_september[15],percentage_october[15]]
+tweet16 = [percentage_june[16],percentage_july[16],percentage_august[16],percentage_september[16],percentage_october[16]]
+tweet17 = [percentage_june[17],percentage_july[17],percentage_august[17],percentage_september[17],percentage_october[17]]
 
 months = range(1, 6)
 
