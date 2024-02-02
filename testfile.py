@@ -36,16 +36,19 @@ def detector(topic,tweet):
     
 def main(country, topic, file, date):
     print(country, topic, file, date)
-    #df = pd.read_csv('August21Data.csv')
-    df = pd.read_csv('Book2.csv')
+    df = pd.read_csv('August21Data.csv')
+   # df = pd.read_csv('Book2.csv')
     #df = pd.read_csv(file)
     df2 = df[df['searched_hashtag_country'] == country]
     df3 = df2[["id","searched_hashtag_country","tweet_text","latitude","longitude"]]
+    hashcountry = df3["searched_hashtag_country"]
     arr = df3["tweet_text"]
     lat = df3["latitude"]
     lon = df3["longitude"]
     id = df3["id"]
-    print(arr)
+    #hashcountry.index(country)
+    tempi = hashcountry.index("Canada")
+    print(tempi)
     new_arr = []
     new_lat = []
     new_lon = []
@@ -71,10 +74,11 @@ def main(country, topic, file, date):
             #    print(latitude)
             #    d["lat"].append(lat[index])
             #    d["lon"].append(lon[index])
-                temp_index = index - 1
-                print(temp_index)
-                print(arr)
-                print(id)
+                print(index)
+                temp_index = id[index] - 1
+                #print(temp_index)
+                #print(arr)
+                #print(id)
                 new_arr.append(arr[temp_index])
                 new_lat.append(lat[temp_index])
                 new_lon.append(lon[temp_index])

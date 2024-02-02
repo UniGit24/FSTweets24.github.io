@@ -40,11 +40,11 @@ def main(country, topic, file, date):
     #df = pd.read_csv('Book2.csv')
     df = pd.read_csv(file)
     df2 = df[df['searched_hashtag_country'] == country]
-    df3 = df2[["id","searched_hashtag_country","tweet_text","latitude","longitude"]]
+    df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude"]]
     arr = df3["tweet_text"]
     lat = df3["latitude"]
     lon = df3["longitude"]
-    id = df3["id"]
+    #id = df3["id"]
     print(arr)
     new_arr = []
     new_lat = []
@@ -74,7 +74,7 @@ def main(country, topic, file, date):
                 temp_index = index - 1
                 print(temp_index)
                 print(arr)
-                print(id)
+                #print(id)
                 new_arr.append(arr[temp_index])
                 new_lat.append(lat[temp_index])
                 new_lon.append(lon[temp_index])
