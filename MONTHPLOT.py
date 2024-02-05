@@ -4,7 +4,7 @@ from pylab import axis
 import pandas as pd
 
 
-df = pd.read_csv('FINAL_RESULTS.csv')
+df = pd.read_csv('finanlresultsaustralia.csv')
 
 topic_list = df["topic"]
 countries = df["country"]
@@ -15,13 +15,13 @@ percentage_september = df["percentage september"]
 percentage_october = df["percentage october"]
 
 
-#FIND AS A PERCENTAGE OF TOTAL TWEETS THE ONES ABOVE 80    
-tweet1 = [percentage_june[1],percentage_july[1],percentage_august[1],percentage_september[1],percentage_october[1]]
-tweet2 = [percentage_june[2],percentage_july[2],percentage_august[2],percentage_september[2],percentage_october[2]]
-tweet3 = [percentage_june[3],percentage_july[3],percentage_august[3],percentage_september[3],percentage_october[3]]
-tweet4 = [percentage_june[4],percentage_july[4],percentage_august[4],percentage_september[4],percentage_october[4]]
-tweet5 = [percentage_june[5],percentage_july[5],percentage_august[5],percentage_september[5],percentage_october[5]]
-tweet6 = [percentage_june[6],percentage_july[6],percentage_august[6],percentage_september[6],percentage_october[6]]
+#FIND AS A PERCENTAGE OF TOTAL TWEETS THE ONES ABOVE 80   
+tweet1 = [percentage_june[0],percentage_july[0],percentage_august[0],percentage_september[0],percentage_october[0]] 
+tweet2 = [percentage_june[1],percentage_july[1],percentage_august[1],percentage_september[1],percentage_october[1]]
+tweet3 = [percentage_june[2],percentage_july[2],percentage_august[2],percentage_september[2],percentage_october[2]]
+tweet4 = [percentage_june[3],percentage_july[3],percentage_august[3],percentage_september[3],percentage_october[3]]
+tweet5 = [percentage_june[4],percentage_july[4],percentage_august[4],percentage_september[4],percentage_october[4]]
+tweet6 = [percentage_june[5],percentage_july[5],percentage_august[5],percentage_september[5],percentage_october[5]]
 
 months = range(1, 6)
 
