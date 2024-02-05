@@ -163,22 +163,22 @@ def initialiser (country):
     Canada_topics = ["June 21 – The Government of Canada announces the first phase to easing the COVID-19 border measures for travellers, thus lifting quarantine requirements for fully immunised travellers starting on July 5", "June 30 - Dozens of people have died amid an unprecedented heatwave that has smashed temperature records.", "July 20 – British Columbia declares a state of emergency in response to the 2021 British Columbia wildfires.", "August 2 -  SARS-CoV-2 Delta variant becomes the pre-dominant strain of COVID-19 in Canada."]
     if (country == 'Australia'): 
         for topic in Australia_topics:
-            #topic = "Victoria to enter sixth lockdown"
-            #file = 'August21Data.csv'
-            #date = 'August 21'
+            topic = "25 August – New South Wales records 1,029 new cases of COVID-19 in 24 hours becoming the first state in Australia to surpass the 1,000 daily case milestone."
+            file = 'August21Data.csv'
+            date = 'August 21'
+            main(country, topic, file, date)
+            #file = '2021_July_twitter_trending_data.csv'
+           # date = 'July 21'
             #main(country, topic, file, date)
-            file = '2021_July_twitter_trending_data.csv'
-            date = 'July 21'
-            main(country, topic, file, date)
-            file = '2021_June_twitter_trending_data.csv'
-            date = 'June 21'
-            main(country, topic, file, date)
-            file = '2021_September_twitter_trending_data.csv'
-            date = 'September 21'
-            main(country, topic, file, date)
-            file = '2021_October_twitter_trending_data.csv'
-            date = 'October 21'
-            main(country, topic, file, date)
+           # file = '2021_June_twitter_trending_data.csv'
+           # date = 'June 21'
+           # main(country, topic, file, date)
+           # file = '2021_September_twitter_trending_data.csv'
+           # date = 'September 21'
+           # main(country, topic, file, date)
+           # file = '2021_October_twitter_trending_data.csv'
+           # date = 'October 21'
+           # main(country, topic, file, date)
 
     if (country == 'Canada'): 
         for topic in Canada_topics:
