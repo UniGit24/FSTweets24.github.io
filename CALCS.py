@@ -15,8 +15,8 @@ percentage_october = df["percentage october"]
 
 
 tweet1 = [percentage_june[0],percentage_july[0],percentage_august[0],percentage_september[0],percentage_october[0]]
-print(statistics.stdev([percentage_june[1],percentage_july[1]]))
-print(statistics.stdev([percentage_august[1],percentage_september[1],percentage_october[1]]))
+print(statistics.stdev([percentage_june[0],percentage_july[0]]))
+print(statistics.stdev([percentage_august[0],percentage_september[0],percentage_october[0]]))
 # Create the data for two groups
 group1 = np.random.rand(25)
 group2 = np.random.rand(20)
