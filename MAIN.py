@@ -19,8 +19,8 @@ def average_pool(last_hidden_states: Tensor,
 def detector(topic,tweet):
     input_texts = [topic, tweet]
 
-    tokenizer = AutoTokenizer.from_pretrained("thenlper/gte-small")
-    model = AutoModel.from_pretrained("thenlper/gte-small")
+    tokenizer = AutoTokenizer.from_pretrained("thenlper/gte-large")
+    model = AutoModel.from_pretrained("thenlper/gte-large")
 
     # Tokenize the input texts
     batch_dict = tokenizer(input_texts, max_length=512, padding=True, truncation=True, return_tensors='pt')
