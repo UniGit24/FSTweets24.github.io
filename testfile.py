@@ -152,6 +152,7 @@ def main(country, topic, file, date):
     fig.show()
     filename = topic + date +".html"
     fig.write_html(filename)
+    
     #fig.write_html("austweet1.html")
     #fdf = pd.DataFrame(data=d)
     #fig = px.scatter_geo(fdf, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
