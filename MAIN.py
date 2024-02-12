@@ -74,6 +74,9 @@ def main(country, topic, file, date):
             index = index + 1
         temp_no_scores = temp_no_scores +1
         print(score)
+        print(temp_no_scores)
+        if temp_no_scores == 100:
+            break
         index_list = []
         for y in score:
             if y>80:
@@ -251,21 +254,20 @@ def initialiser (country):
             september_percent = ((september_found/september_no)*100)
             october_percent = ((october_found/october_no)*100)
 
-            List = [country,topic,june_no,june_found,june_percent,july_no,july_found,july_percent,august_no,august_found,august_percent,september_no,september_found,september_percent,october_no,october_found,october_percent]
+            List = [[country,topic,june_no,june_found,june_percent,july_no,july_found,july_percent,august_no,august_found,august_percent,september_no,september_found,september_percent,october_no,october_found,october_percent]]
             print(List)
             # Open our existing CSV file in append mode
             # Create a file object for this file
-            with open('FINAL_RESULTS.csv', 'a') as f_object:
+            with open('FINALAUS.csv', 'a', newline = '') as f_object:
                 # Pass this file object to csv.writer()
                 # and get a writer object
-                writer_object = writer(f_object)
+                writer_object = csv.writer(f_object)
         
-                # Pass the list as an argument into
-                # the writerow()
-                writer_object.writerow(List)
+                # Pass the list as an argument into the writerow()
+                writer_object.writerows(List)
         
                 # Close the file object
-                f_object.close()
+        f_object.close()        
 
 
     if (country == 'Canada'): 
