@@ -210,7 +210,7 @@ def main(country, topic, file, date):
                 october_found
                 october_no = temp_no_scores
                 october_found = tweetsfound
-    if (country == 'US'):   
+    if (country == 'United States'):   
         fig.update_layout(
             title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='usa'
@@ -273,7 +273,7 @@ def initialiser (country):
                 print(i['title'])
             else:
                 print(" ")
-        if "US" in i['title']:
+        if "U.S." in i['title']:
             if "June 2021" or "July 2021" or "August 2021" or "Septemebr 2021" or "October 2021" in i['date_created']:
                 US_topics.append(i['title'])
                 US_dates.append(i['date_created'])
