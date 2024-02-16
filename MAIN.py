@@ -149,11 +149,7 @@ def main(country, topic, file, date):
 
     fig = px.scatter_geo(classA, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
     #country selecter
-    if (country == 'United States'): 
-        fig.update_layout(
-            title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
-            geo_scope='usa'
-        )
+    
     if (country == 'Australia'): 
         fig.update_layout(
             title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
@@ -214,6 +210,36 @@ def main(country, topic, file, date):
                 october_found
                 october_no = temp_no_scores
                 october_found = tweetsfound
+    if (country == 'US'):   
+        fig.update_layout(
+            title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
+            geo_scope='usa'
+        )
+        if (date == 'June 21'):
+                june_no
+                june_found
+                june_no = temp_no_scores
+                june_found = tweetsfound
+        if (date == 'July 21'):
+                july_no
+                july_found
+                july_no = temp_no_scores
+                july_found = tweetsfound
+        if (date == 'August 21'):
+                august_no
+                august_found
+                august_no = temp_no_scores
+                august_found = tweetsfound
+        if (date == 'September 21'):
+                september_no
+                september_found
+                september_no = temp_no_scores
+                september_found = tweetsfound
+        if (date == 'October 21'):
+                october_no
+                october_found
+                october_no = temp_no_scores
+                october_found = tweetsfound
     fig.show()
     filename = topic + date +".html"
     fig.write_html(filename)
@@ -229,6 +255,9 @@ def initialiser (country):
     Canada_topics = []
     Canada_dates = []
     parseCanadaTopics = []
+    US_topics = []
+    US_dates = []
+    parseUSTopics = []
     # Opening JSON file
     f = open('bloomberg_quint_news (1).json',)
     # returns JSON object as
@@ -245,7 +274,12 @@ def initialiser (country):
             else:
                 print(" ")
         if "US" in i['title']:
-            print(i['title'])
+            if "June 2021" or "July 2021" or "August 2021" or "Septemebr 2021" or "October 2021" in i['date_created']:
+                US_topics.append(i['title'])
+                US_dates.append(i['date_created'])
+                print(i['title'])
+            else:
+                print(" ")
         if "Canada" in i['title']:
             if "June 2021" or "July 2021" or "August 2021" or "Septemebr 2021" or "October 2021" in i['date_created']:
                 Canada_topics.append(i['title'])
@@ -264,6 +298,10 @@ def initialiser (country):
         y = str(x + str(Canada_dates[index]))
         print(y)
         parseCanadaTopics.append(y)
+    for index, x in enumerate(US_topics, start=0): 
+        y = str(x + str(US_dates[index]))
+        print(y)
+        parseUSTopics.append(y)
    #Canada_topics = ["June 21 – The Government of Canada announces the first phase to easing the COVID-19 border measures for travellers, thus lifting quarantine requirements for fully immunised travellers starting on July 5", "June 30 - Dozens of people have died amid an unprecedented heatwave that has smashed temperature records.", "July 20 – British Columbia declares a state of emergency in response to the 2021 British Columbia wildfires.", "August 2 -  SARS-CoV-2 Delta variant becomes the pre-dominant strain of COVID-19 in Canada."]
     if (country == 'Australia'): 
         for topic in parseAustraliaTopics:
@@ -349,7 +387,7 @@ def initialiser (country):
         f_object.close()  
 
     if (country == 'United States'): 
-        for topic in USA_topics:
+        for topic in parseUSTopics:
             #topic = "Victoria to enter sixth lockdown"
             file = 'August21Data.csv'
             date = 'August 21'
@@ -366,6 +404,30 @@ def initialiser (country):
             file = '2021_October_twitter_trending_data.csv'
             date = 'October 21'
             main(country, topic, file, date)
+
+            # List that we want to add as a new row
+            june_percent = ((june_found/june_no)*100)
+            july_percent = ((july_found/july_no)*100)
+            august_percent = ((august_found/august_no)*100)
+            september_percent = ((september_found/september_no)*100)
+            october_percent = ((october_found/october_no)*100)
+
+            List = [[country,topic,june_no,june_found,june_percent,july_no,july_found,july_percent,august_no,august_found,august_percent,september_no,september_found,september_percent,october_no,october_found,october_percent]]
+            print(List)
+            # Open our existing CSV file in append mode
+            # Create a file object for this file
+            with open('FINALUS.csv', 'a', newline = '') as f_object:
+                # Pass this file object to csv.writer()
+                # and get a writer object
+                writer_object = csv.writer(f_object)
+        
+                # Pass the list as an argument into the writerow()
+                writer_object.writerows(List)
+        
+                # Close the file object
+        f_object.close()        
+
+
 
 
 from tkinter import *
