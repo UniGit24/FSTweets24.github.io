@@ -15,12 +15,12 @@ from csv import writer
 june_no = 0
 july_no = 0
 august_no = 0
-septemebr_no = 0
+september_no = 0
 october_no = 0
 june_found = 0
 july_found = 0
 august_found= 0
-septemebr_found = 0
+september_found = 0
 october_found = 0
 
 def average_pool(last_hidden_states: Tensor,
