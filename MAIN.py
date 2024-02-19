@@ -90,14 +90,22 @@ def main(country, topic, file, date):
                 print(temp_index)
                 print(arr)
                 #print(id)
+                #print(arr[temp_index])
+                if (country == "United States" ):
+                    if (date == 'August 21'):
+                        temp_index = temp_index + 23130
+                    if (date == 'July 21'):
+                        temp_index = temp_index + 7634
                 try:
                     new_arr.append(arr[temp_index])
                     new_lat.append(lat[temp_index])
                     new_lon.append(lon[temp_index])
                     temp_score = y
                     new_score.append(((temp_score.item()-75)*5))
+                    print(new_arr)
                 except:
                     index = index + 1
+
     #for index, x in enumerate(arr, start=1): 
         #for y in index_list:
             #if y == index:
@@ -117,6 +125,7 @@ def main(country, topic, file, date):
     d = {"text": new_arr, "lat": new_lat, "lon": new_lon, "score": new_score}
     d_columns = ['text', 'lat', 'lon', 'score']
     tweetsfound = len(new_arr)
+    print(tweetsfound)
     classA = pd.DataFrame(
     d
     )
@@ -293,7 +302,7 @@ def initialiser (country):
         y = str(x + str(Australia_dates[index]))
         print(y)
         parseAustraliaTopics.append(y)
-    USA_topics = ["June 1 - SARS-CoV-2 Delta variant becomes the dominant strain of COVID-19 in the United States", "June 1 - COVID-19 vaccines – Moderna seeks full approval from the FDA for the Moderna COVID-19 vaccine", "June 5 – Aftermath of the January 6 United States Capitol attack – The Department of Justice says that over 465 people have been arrested since the January 6 attack. It is also seeking information on 250 other suspects.", "July 20 - Tom Barrack, founder of Colony Capital and an advisor of Donald Trump, is indicted for making false statements to the FBI and being an unregistered agent for the United Arab Emirates.", "August 2 - COVID-19 vaccination: Over 70% of adults are reported to have received at least one dose of a COVID-19 vaccine.", "August 10 - New York Governor Andrew Cuomo announces he will resign effective August 24 after an inquiry found he sexually harassed multiple women.", "August 29 - Hurricane Ida makes landfall at 11:55am CDT near Port Fourchon, Louisiana, on the 16th anniversary of Hurricane Katrina."]
+    #USA_topics = ["June 1 - SARS-CoV-2 Delta variant becomes the dominant strain of COVID-19 in the United States", "June 1 - COVID-19 vaccines – Moderna seeks full approval from the FDA for the Moderna COVID-19 vaccine", "June 5 – Aftermath of the January 6 United States Capitol attack – The Department of Justice says that over 465 people have been arrested since the January 6 attack. It is also seeking information on 250 other suspects.", "July 20 - Tom Barrack, founder of Colony Capital and an advisor of Donald Trump, is indicted for making false statements to the FBI and being an unregistered agent for the United Arab Emirates.", "August 2 - COVID-19 vaccination: Over 70% of adults are reported to have received at least one dose of a COVID-19 vaccine.", "August 10 - New York Governor Andrew Cuomo announces he will resign effective August 24 after an inquiry found he sexually harassed multiple women.", "August 29 - Hurricane Ida makes landfall at 11:55am CDT near Port Fourchon, Louisiana, on the 16th anniversary of Hurricane Katrina."]
     for index, x in enumerate(Canada_topics, start=0): 
         y = str(x + str(Canada_dates[index]))
         print(y)
@@ -443,16 +452,7 @@ def get_index(*arg):
     
     initialiser(str(var.get()))
 
-months = ('Australia', 
-						'Brazil', 
-						'Canada', 
-						'France', 
-						'Germany', 
-						'India', 
-						'Italy', 
-						'Mexico', 
-						'Ukraine', 
-						'United States')  
+months = ('Australia', 'Canada', 'United States')  
 
 var = StringVar() 
 combo = ttk.Combobox(app, textvariable=var) 
