@@ -96,6 +96,12 @@ def main(country, topic, file, date):
                         temp_index = temp_index + 23130
                     if (date == 'July 21'):
                         temp_index = temp_index + 7634
+                    if (date == 'June 21'):
+                        temp_index = temp_index + 34212
+                    if (date == 'September 21'):
+                        temp_index = temp_index + 7618
+                    if (date == 'October 21'):
+                        temp_index = temp_index + 5960
                 try:
                     new_arr.append(arr[temp_index])
                     new_lat.append(lat[temp_index])
