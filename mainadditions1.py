@@ -96,7 +96,6 @@ def main(country, topic, date, arr, lon, lat):
                     index = index + 1
 
     d = {"text": new_arr, "lat": new_lat, "lon": new_lon, "score": new_score}
-    d_columns = ['text', 'lat', 'lon', 'score']
     tweetsfound = len(new_arr)
     print(tweetsfound)
     classA = pd.DataFrame(
@@ -268,51 +267,36 @@ def initialiser (country):
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
             df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            jan21.append(df3[df3['user_created_datetime'].str.contains('01/2021')])
-            feb21.append(df3[df3['user_created_datetime'].str.contains('02/2021')])
-            mar21.append(df3[df3['user_created_datetime'].str.contains('03/2021')])
-            apr21.append(df3[df3['user_created_datetime'].str.contains('04/2021')])
-            may21.append(df3[df3['user_created_datetime'].str.contains('05/2021')])
-            jun21.append(df3[df3['user_created_datetime'].str.contains('06/2021')])
-            jul21.append(df3[df3['user_created_datetime'].str.contains('07/2021')])
             file = '2021_June_twitter_trending_data.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
-            df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            jan21.append(df3[df3['user_created_datetime'].str.contains('01/2021')])
-            feb21.append(df3[df3['user_created_datetime'].str.contains('02/2021')])
-            mar21.append(df3[df3['user_created_datetime'].str.contains('03/2021')])
-            apr21.append(df3[df3['user_created_datetime'].str.contains('04/2021')])
-            may21.append(df3[df3['user_created_datetime'].str.contains('05/2021')])
-            jun21.append(df3[df3['user_created_datetime'].str.contains('06/2021')])
-            jul21.append(df3[df3['user_created_datetime'].str.contains('07/2021')])
+            df4 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
             file = '2021_September_twitter_trending_data.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
-            df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            jan21.append(df3[df3['user_created_datetime'].str.contains('01/2021')])
-            feb21.append(df3[df3['user_created_datetime'].str.contains('02/2021')])
-            mar21.append(df3[df3['user_created_datetime'].str.contains('03/2021')])
-            apr21.append(df3[df3['user_created_datetime'].str.contains('04/2021')])
-            may21.append(df3[df3['user_created_datetime'].str.contains('05/2021')])
-            jun21.append(df3[df3['user_created_datetime'].str.contains('06/2021')])
-            jul21.append(df3[df3['user_created_datetime'].str.contains('07/2021')])
+            df5 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
             file = '2021_October_twitter_trending_data.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
-            df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            jan21.append(df3[df3['user_created_datetime'].str.contains('01/2021')])
-            feb21.append(df3[df3['user_created_datetime'].str.contains('02/2021')])
-            mar21.append(df3[df3['user_created_datetime'].str.contains('03/2021')])
-            apr21.append(df3[df3['user_created_datetime'].str.contains('04/2021')])
-            may21.append(df3[df3['user_created_datetime'].str.contains('05/2021')])
-            jun21.append(df3[df3['user_created_datetime'].str.contains('06/2021')])
-            jul21.append(df3[df3['user_created_datetime'].str.contains('07/2021')])
+            df6 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
 
+            df7 = pd.concat([df3, df4, df5, df6], ignore_index=True)
+
+            jan21.append(df7[df7['user_created_datetime'].str.contains('01/2021')])
+            feb21.append(df7[df7['user_created_datetime'].str.contains('02/2021')])
+            mar21.append(df7[df7['user_created_datetime'].str.contains('03/2021')])
+            apr21.append(df7[df7['user_created_datetime'].str.contains('04/2021')])
+            may21.append(df7[df7['user_created_datetime'].str.contains('05/2021')])
+            jun21.append(df7[df7['user_created_datetime'].str.contains('06/2021')])
+            jul21.append(df7[df7['user_created_datetime'].str.contains('07/2021')])
+
+            print(jan21)
             arr = jan21["tweet_text"]
+            print(arr)
             lat = jan21["latitude"]
             lon = jan21["longitude"]
             date = "jan 21"
+            
             main(country, topic, date, arr, lon, lat)
             arr = feb21["tweet_text"]
             lat = feb21["latitude"]
