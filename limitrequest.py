@@ -24,6 +24,9 @@ def eachcity(city,cityCount):
     cityCount + 1
     getresults(cityCount)
 
-
+import pandas as pd
+df = pd.read_csv('August21Data.csv')
+for dtype in df.dtypes.iteritems():
+    print(dtype)
 citycount = 0
 getresults(citycount)
