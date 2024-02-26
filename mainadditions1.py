@@ -15,14 +15,18 @@ import re
 
 june_no = 0
 july_no = 0
-august_no = 0
-september_no = 0
-october_no = 0
+jan_no = 0
+feb_no = 0
+mar_no = 0
+apr_no = 0
+may_no = 0
 june_found = 0
 july_found = 0
-august_found= 0
-september_found = 0
-october_found = 0
+jan_found= 0
+feb_found = 0
+mar_found = 0
+apr_found = 0
+may_found = 0
 
 def average_pool(last_hidden_states: Tensor,
                  attention_mask: Tensor) -> Tensor:
@@ -48,16 +52,12 @@ def detector(topic,tweet):
 
     
 def main(country, topic, date, arr, lon, lat):
-
     new_arr = []
     new_lat = []
     new_lon = []
     new_score = []
     temp_no_scores = 0
-   # d = {'text': [], 'lat': [], 'lon':[]}
     for index, x in enumerate(arr, start=1): 
-        #topic = "Victoria to enter sixth lockdown"
-        #topic = "the spirit of god"
         tweet = x
         try:
             score = detector(topic,tweet)
@@ -71,17 +71,9 @@ def main(country, topic, date, arr, lon, lat):
         index_list = []
         for y in score:
             if y>80:
-            #    print()
-            #    d["text"].append(x)
-            #    latitude = lat[index]
-            #    print(latitude)
-            #    d["lat"].append(lat[index])
-            #    d["lon"].append(lon[index])
                 temp_index = index - 1
                 print(temp_index)
                 print(arr)
-                #print(id)
-                #print(arr[temp_index])
                 if (country == "United States" ):
                     if (date == 'August 21'):
                         temp_index = temp_index + 23130
@@ -103,22 +95,6 @@ def main(country, topic, date, arr, lon, lat):
                 except:
                     index = index + 1
 
-    #for index, x in enumerate(arr, start=1): 
-        #for y in index_list:
-            #if y == index:
-                #print(index)
-               # print(y)
-               # temp_index = index - 1
-              #  print(temp_index)
-              #  print(arr[temp_index])
-              #  new_arr.append(arr[temp_index])
-              #  new_lat.append(lat[temp_index])
-              #  new_lon.append(lon[temp_index])
-    #for x in index_list:
-    #    temp_index = x - 1
-    #    new_arr.append(arr[temp_index])
-    #    new_lat.append(lat[temp_index])
-    #    new_lon.append(lon[temp_index])
     d = {"text": new_arr, "lat": new_lat, "lon": new_lon, "score": new_score}
     d_columns = ['text', 'lat', 'lon', 'score']
     tweetsfound = len(new_arr)
@@ -127,65 +103,49 @@ def main(country, topic, date, arr, lon, lat):
     d
     )
     print(classA)
-#save dataframe to csv file
-   # classA.to_csv("student.csv", index=False)
-    #print(d)
-    #with open("test.csv", "w") as outfile:
-       # linker = csv.DictWriter(outfile, fieldnames = d_columns)
-        #linker.writeheader()
-        #for x in d_columns:
-        #    linker.writerow(x)
-        #writer = csv.DictWriter(outfile, fieldnames=d_columns)
-       # writer.writeheader()
-       # for data in d:
-        #    writer.writerow(data)
-        #w = csv.DictWriter(outfile, d.keys())
-        #w.writeheader()
-        #w.writerow(d)
-        #writer = csv.writer(outfile)
-        #key_list = list(d.keys())
-        #limit = len(d)
-        #writer.writerow(d.keys())
-        #for i in range(limit):
-            #writer.writerow([d[x][i] for x in key_list])
-    #dt = pd.read_csv('test.csv')
-    #print(dt)
-    #fig = go.Figure(data=go.Scattergeo(lon = dt['lon'],lat = dt['lat'],text = dt['text'], mode = 'markers',size = dt['score']))
-    #fig = px.scatter_geo(dt, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
 
     fig = px.scatter_geo(classA, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
-    #country selecter
     
     if (country == 'Australia'): 
         fig.update_layout(
             title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
             geo_scope='world'
         )
-        if (date == 'June 21'):
+        if (date == 'jun 21'):
                 global june_no
                 global june_found
                 june_no = temp_no_scores
                 june_found = tweetsfound
-        if (date == 'July 21'):
+        if (date == 'jul 21'):
                 global july_no
                 global july_found
                 july_no = temp_no_scores
                 july_found = tweetsfound
-        if (date == 'August 21'):
-                global august_no
-                global august_found
-                august_no = temp_no_scores
-                august_found = tweetsfound
-        if (date == 'September 21'):
-                global september_no
-                global september_found
-                september_no = temp_no_scores
-                september_found = tweetsfound
-        if (date == 'October 21'):
-                global october_no
-                global october_found
-                october_no = temp_no_scores
-                october_found = tweetsfound
+        if (date == 'jan 21'):
+                global jan_no
+                global jan_found
+                jan_no = temp_no_scores
+                jan_found = tweetsfound
+        if (date == 'feb 21'):
+                global feb_no
+                global feb_found
+                feb_no = temp_no_scores
+                feb_found = tweetsfound
+        if (date == 'mar 21'):
+                global mar_no
+                global mar_found
+                mar_no = temp_no_scores
+                mar_found = tweetsfound
+        if (date == 'apr 21'):
+                global apr_no
+                global apr_found
+                apr_no = temp_no_scores
+                apr_found = tweetsfound        
+        if (date == 'may 21'):
+                global may_no
+                global may_found
+                may_no = temp_no_scores
+                may_found = tweetsfound
     if (country == 'Canada'):   
         fig.update_layout(
             title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
@@ -249,10 +209,6 @@ def main(country, topic, date, arr, lon, lat):
     fig.show()
     filename = topic + date +".html"
     fig.write_html(filename)
-    #fig.write_html("austweet1.html")
-    #fdf = pd.DataFrame(data=d)
-    #fig = px.scatter_geo(fdf, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
-    #fig.show()
 
 def initialiser (country):
     Australia_topics = []
@@ -388,26 +344,20 @@ def initialiser (country):
             lon = jul21["longitude"]
             date = "jul 21"
             main(country, topic, date, arr, lon, lat)
-            
+
             june_percent = ((june_found/june_no)*100)
             july_percent = ((july_found/july_no)*100)
-            august_percent = ((august_found/august_no)*100)
-            september_percent = ((september_found/september_no)*100)
-            october_percent = ((october_found/october_no)*100)
+            jan_percent = ((jan_found/jan_no)*100)
+            feb_percent = ((feb_found/feb_no)*100)
+            mar_percent = ((mar_found/mar_no)*100)
+            apr_percent = ((apr_found/apr_no)*100)
+            may_percent = ((may_found/may_no)*100)
 
-            List = [[country,topic,june_no,june_found,june_percent,july_no,july_found,july_percent,august_no,august_found,august_percent,september_no,september_found,september_percent,october_no,october_found,october_percent]]
+            List = [[country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent,july_percent]]
             print(List)
-            # Open our existing CSV file in append mode
-            # Create a file object for this file
             with open('FINALAUS.csv', 'a', newline = '') as f_object:
-                # Pass this file object to csv.writer()
-                # and get a writer object
                 writer_object = csv.writer(f_object)
-        
-                # Pass the list as an argument into the writerow()
                 writer_object.writerows(List)
-        
-                # Close the file object
         f_object.close()        
 
 
@@ -509,11 +459,11 @@ def get_index(*arg):
     
     initialiser(str(var.get()))
 
-months = ('Australia', 'Canada', 'United States')  
+countries = ('Australia', 'Canada', 'United States')  
 
 var = StringVar() 
 combo = ttk.Combobox(app, textvariable=var) 
-combo['values'] = months 
+combo['values'] = countries 
 combo['state'] = 'readonly'
 combo.pack(padx=5, pady=5) 
 
