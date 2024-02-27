@@ -12,6 +12,7 @@ import plotly.graph_objects as go
 import json
 from csv import writer
 import re
+from collections import Counter
 
 june_no = 0
 july_no = 0
@@ -27,6 +28,15 @@ feb_found = 0
 mar_found = 0
 apr_found = 0
 may_found = 0
+
+def find_most_common_hashtags(texts):
+    hashtags = []
+    for text in texts:
+        found_hashtags = re.findall(r'#(\w+)', text)
+        hashtags.extend(found_hashtags)
+    hashtag_counter = Counter(hashtags)
+    most_common_hashtags = hashtag_counter.most_common()
+    return most_common_hashtags
 
 def average_pool(last_hidden_states: Tensor,
                  attention_mask: Tensor) -> Tensor:
@@ -96,7 +106,18 @@ def main(country, topic, date, arr, lon, lat):
 
     d = {"text": new_arr, "lat": new_lat, "lon": new_lon, "score": new_score}
     tweetsfound = len(new_arr)
+
+    most_common_hashtags = find_most_common_hashtags(new_arr)
+    for hashtag, count in most_common_hashtags:
+        if count >= 2:
+            for index, element in enumerate(arr):
+                if hashtag in element:
+                    new_arr.append(arr[index])
+                    new_lat.append(lat[index])
+                    new_lon.append(lon[index])
+
     print(tweetsfound)
+    print(new_arr)
     classA = pd.DataFrame(
     d
     )
@@ -333,9 +354,9 @@ def initialiser (country):
             apr_percent = ((apr_found/apr_no)*100)
             may_percent = ((may_found/may_no)*100)
 
-            List = [[country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent,july_percent]]
+            List = [[country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent, july_percent]]
             print(List)
-            with open('FINALAUS.csv', 'a', newline = '') as f_object:
+            with open('FINALAUS1.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerows(List)
         f_object.close()        
