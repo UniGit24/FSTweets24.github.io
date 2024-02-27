@@ -53,6 +53,7 @@ def main(country, topic, file, date):
     df = pd.read_csv(file)
     df2 = df[df['searched_hashtag_country'] == country]
     df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude"]]
+    print(df3)
     arr = df3["tweet_text"]
     lat = df3["latitude"]
     lon = df3["longitude"]

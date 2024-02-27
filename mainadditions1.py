@@ -68,7 +68,6 @@ def main(country, topic, date, arr, lon, lat):
         print(temp_no_scores)
         if temp_no_scores == 100:
             break
-        index_list = []
         for y in score:
             if y>80:
                 temp_index = index - 1
@@ -256,13 +255,13 @@ def initialiser (country):
         parseUSTopics.append(y)
     if (country == 'Australia'): 
         for topic in parseAustraliaTopics:
-            jan21 = [[]]
-            feb21 = [[]]
-            mar21 = [[]]
-            apr21 = [[]]
-            may21 = [[]]
-            jun21 = [[]]
-            jul21 = [[]]
+            jan21 = []
+            feb21 = []
+            mar21 = []
+            apr21 = []
+            may21 = []
+            jun21 = []
+            jul21 = []
             file = '2021_July_twitter_trending_data.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
@@ -282,21 +281,18 @@ def initialiser (country):
 
             df7 = pd.concat([df3, df4, df5, df6], ignore_index=True)
 
-            jan21.append(df7[df7['user_created_datetime'].str.contains('01/2021')])
-            feb21.append(df7[df7['user_created_datetime'].str.contains('02/2021')])
-            mar21.append(df7[df7['user_created_datetime'].str.contains('03/2021')])
-            apr21.append(df7[df7['user_created_datetime'].str.contains('04/2021')])
-            may21.append(df7[df7['user_created_datetime'].str.contains('05/2021')])
-            jun21.append(df7[df7['user_created_datetime'].str.contains('06/2021')])
-            jul21.append(df7[df7['user_created_datetime'].str.contains('07/2021')])
+            jan21 = df7[df7['user_created_datetime'].str.contains('01/2021')]
+            feb21 = df7[df7['user_created_datetime'].str.contains('02/2021')]
+            mar21 = df7[df7['user_created_datetime'].str.contains('03/2021')]
+            apr21 = df7[df7['user_created_datetime'].str.contains('04/2021')]
+            may21 = df7[df7['user_created_datetime'].str.contains('05/2021')]
+            jun21 = df7[df7['user_created_datetime'].str.contains('06/2021')]
+            jul21 = df7[df7['user_created_datetime'].str.contains('07/2021')]
 
-            print(jan21)
             arr = jan21["tweet_text"]
-            print(arr)
             lat = jan21["latitude"]
             lon = jan21["longitude"]
             date = "jan 21"
-            
             main(country, topic, date, arr, lon, lat)
             arr = feb21["tweet_text"]
             lat = feb21["latitude"]
