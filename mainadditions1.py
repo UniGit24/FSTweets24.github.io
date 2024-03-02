@@ -67,6 +67,7 @@ def main(country, topic, date, arr, lon, lat):
     new_lon = []
     new_score = []
     temp_no_scores = 0
+    maintweets = 0
     for index, x in enumerate(arr, start=1): 
         tweet = x
         try:
@@ -76,10 +77,9 @@ def main(country, topic, date, arr, lon, lat):
         temp_no_scores = temp_no_scores +1
         print(score)
         print(temp_no_scores)
-        if temp_no_scores == 100:
-            break
         for y in score:
             if y>80:
+                maintweets = maintweets + 1
                 temp_index = index - 1
                 print(temp_index)
                 print(arr)
@@ -94,27 +94,47 @@ def main(country, topic, date, arr, lon, lat):
                         temp_index = temp_index + 7618
                     if (date == 'October 21'):
                         temp_index = temp_index + 5960
+                items_list = list(arr.items())
+                print(items_list[temp_index])
                 try:
-                    new_arr.append(arr[temp_index])
-                    new_lat.append(lat[temp_index])
-                    new_lon.append(lon[temp_index])
+                    items_list = list(arr.items())
+                    new_arr.append(items_list[temp_index])
+                    items_list = list(lat.items())
+                    new_lat.append(items_list[temp_index])
+                    items_list = list(lon.items())
+                    new_lon.append(items_list[temp_index])
+                    #new_lat.append(lat[temp_index])
+                    #new_lon.append(lon[temp_index])
                     temp_score = y
                     new_score.append(((temp_score.item()-75)*5))
-                    print(new_arr)
+                    print(new_arr, new_lat, new_lon)
+                    print([item[1] for item in new_arr])
+                    print(new_score)
                 except:
                     index = index + 1
 
-    d = {"text": new_arr, "lat": new_lat, "lon": new_lon, "score": new_score}
-    tweetsfound = len(new_arr)
 
-    most_common_hashtags = find_most_common_hashtags(new_arr)
+    texts_list = [str(item) for item in new_arr]
+    most_common_hashtags = find_most_common_hashtags(texts_list)
+
     for hashtag, count in most_common_hashtags:
         if count >= 2:
             for index, element in enumerate(arr):
                 if hashtag in element:
-                    new_arr.append(arr[index])
-                    new_lat.append(lat[index])
-                    new_lon.append(lon[index])
+                    items_list = list(arr.items())
+                    new_arr.append(items_list[index])
+                    items_list = list(lat.items())
+                    new_lat.append(items_list[index])
+                    items_list = list(lon.items())
+                    new_lon.append(items_list[index])
+                    new_score.append(((80-75)*5))
+
+    d = {"text": [item[1] for item in new_arr], "lat": [item[1] for item in new_lat], "lon": [item[1] for item in new_lon], "score": new_score}
+    totalcount = 0
+    for x in new_arr:
+        totalcount = totalcount + 1
+    print(len(new_arr), maintweets, totalcount)
+    tweetsfound = len(new_arr) - maintweets
 
     print(tweetsfound)
     print(new_arr)
@@ -124,47 +144,47 @@ def main(country, topic, date, arr, lon, lat):
     print(classA)
 
     fig = px.scatter_geo(classA, lat='lat', lon='lon', title='Map', hover_name='text', size='score')
-    
+    print()
     if (country == 'Australia'): 
         fig.update_layout(
-            title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
+            title = ("Number of tweets:" + str(len(arr)) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(totalcount)),
             geo_scope='world'
         )
         if (date == 'jun 21'):
                 global june_no
                 global june_found
-                june_no = temp_no_scores
-                june_found = tweetsfound
+                june_no = len(arr)
+                june_found = totalcount
         if (date == 'jul 21'):
                 global july_no
                 global july_found
-                july_no = temp_no_scores
-                july_found = tweetsfound
+                july_no = len(arr)
+                july_found = totalcount
         if (date == 'jan 21'):
                 global jan_no
                 global jan_found
-                jan_no = temp_no_scores
-                jan_found = tweetsfound
+                jan_no = len(arr)
+                jan_found = totalcount
         if (date == 'feb 21'):
                 global feb_no
                 global feb_found
-                feb_no = temp_no_scores
-                feb_found = tweetsfound
+                feb_no = len(arr)
+                feb_found = totalcount
         if (date == 'mar 21'):
                 global mar_no
                 global mar_found
-                mar_no = temp_no_scores
-                mar_found = tweetsfound
+                mar_no = len(arr)
+                mar_found = totalcount
         if (date == 'apr 21'):
                 global apr_no
                 global apr_found
-                apr_no = temp_no_scores
-                apr_found = tweetsfound        
+                apr_no = len(arr)
+                apr_found = totalcount        
         if (date == 'may 21'):
                 global may_no
                 global may_found
-                may_no = temp_no_scores
-                may_found = tweetsfound
+                may_no = len(arr)
+                may_found = totalcount
     if (country == 'Canada'):   
         fig.update_layout(
             title = ("Number of tweets:" + str(temp_no_scores) + " Date: " + str(date) + " " + topic + "Tweets found: {}".format(tweetsfound)),
@@ -283,7 +303,7 @@ def initialiser (country):
             may21 = []
             jun21 = []
             jul21 = []
-            file = '2021_July_twitter_trending_data.csv'
+            file = '2021_July_twitter_trending_data.csv' 
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
             df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
@@ -346,13 +366,16 @@ def initialiser (country):
             date = "jul 21"
             main(country, topic, date, arr, lon, lat)
 
-            june_percent = ((june_found/june_no)*100)
-            july_percent = ((july_found/july_no)*100)
-            jan_percent = ((jan_found/jan_no)*100)
-            feb_percent = ((feb_found/feb_no)*100)
-            mar_percent = ((mar_found/mar_no)*100)
-            apr_percent = ((apr_found/apr_no)*100)
-            may_percent = ((may_found/may_no)*100)
+            try:
+                june_percent = ((june_found/june_no)*100)
+                july_percent = ((july_found/july_no)*100)
+                jan_percent = ((jan_found/jan_no)*100)
+                feb_percent = ((feb_found/feb_no)*100)
+                mar_percent = ((mar_found/mar_no)*100)
+                apr_percent = ((apr_found/apr_no)*100)
+                may_percent = ((may_found/may_no)*100)
+            except:
+                break
 
             List = [[country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent, july_percent]]
             print(List)
