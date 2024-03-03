@@ -165,6 +165,7 @@ def main(country, topic, date, arr, lon, lat):
                 global jan_found
                 jan_no = len(arr)
                 jan_found = totalcount
+                print(jan_found,jan_no)
         if (date == 'feb 21'):
                 global feb_no
                 global feb_found
@@ -368,21 +369,23 @@ def initialiser (country):
 
             try:
                 june_percent = ((june_found/june_no)*100)
+                print(june_percent)
                 july_percent = ((july_found/july_no)*100)
                 jan_percent = ((jan_found/jan_no)*100)
                 feb_percent = ((feb_found/feb_no)*100)
                 mar_percent = ((mar_found/mar_no)*100)
                 apr_percent = ((apr_found/apr_no)*100)
                 may_percent = ((may_found/may_no)*100)
+                
+                List = [country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent, july_percent]
+                print(List)
+                with open('FINALAUS1.csv', 'a', newline = '') as f_object:
+                    writer_object = csv.writer(f_object)
+                    writer_object.writerows(List)
+                f_object.close()  
             except:
                 break
-
-            List = [[country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent, july_percent]]
-            print(List)
-            with open('FINALAUS1.csv', 'a', newline = '') as f_object:
-                writer_object = csv.writer(f_object)
-                writer_object.writerows(List)
-        f_object.close()        
+      
 
 
     if (country == 'Canada'): 
