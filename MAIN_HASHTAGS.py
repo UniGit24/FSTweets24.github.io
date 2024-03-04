@@ -171,6 +171,7 @@ def main(country, topic, date, arr, lon, lat):
                 global feb_found
                 feb_no = len(arr)
                 feb_found = totalcount
+                print(feb_found,feb_no)
         if (date == 'mar 21'):
                 global mar_no
                 global mar_found
@@ -367,25 +368,51 @@ def initialiser (country):
             date = "jul 21"
             main(country, topic, date, arr, lon, lat)
 
-            try:
+            if (june_found != 0):
                 june_percent = ((june_found/june_no)*100)
                 print(june_percent)
+            else:
+                june_percent = 0
+
+            if (july_found != 0):
                 july_percent = ((july_found/july_no)*100)
+            else:
+                july_percent = 0
+
+            if (jan_found != 0):
                 jan_percent = ((jan_found/jan_no)*100)
+            else:
+                jan_percent = 0
+
+            if (feb_found != 0):
                 feb_percent = ((feb_found/feb_no)*100)
+                print(feb_percent)
+            else:
+                feb_percent = 0
+
+            if (mar_found != 0):
                 mar_percent = ((mar_found/mar_no)*100)
+            else:
+                mar_percent = 0
+
+            if (apr_found != 0):
                 apr_percent = ((apr_found/apr_no)*100)
+            else:
+                apr_percent = 0
+
+            if (may_found != 0):
                 may_percent = ((may_found/may_no)*100)
-                
-                List = [country, topic, jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent, july_percent]
-                print(List)
-                with open('FINALAUS1.csv', 'a', newline = '') as f_object:
-                    writer_object = csv.writer(f_object)
-                    writer_object.writerows(List)
-                f_object.close()  
-            except:
-                break
-      
+            else:
+                may_percent = 0
+
+            #print(jan_percent, feb_percent, mar_percent, apr_percent, may_percent, june_percent, july_percent)
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent]
+            print(List)
+            with open('FINALAUS1.csv', 'a', newline = '') as f_object:
+                writer_object = csv.writer(f_object)
+                writer_object.writerow(List)
+            f_object.close()  
 
 
     if (country == 'Canada'): 
