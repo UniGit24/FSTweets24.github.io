@@ -166,23 +166,23 @@ def main(country, topic, date, arr, lon, lat):
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
-        if (date == 'feb 21'):
+        if (date == 'feb21'):
                 global feb_no
                 global feb_found
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
-        if (date == 'mar 21'):
+        if (date == 'mar21'):
                 global mar_no
                 global mar_found
                 mar_no = len(arr)
                 mar_found = totalcount
-        if (date == 'apr 21'):
+        if (date == 'apr21'):
                 global apr_no
                 global apr_found
                 apr_no = len(arr)
                 apr_found = totalcount        
-        if (date == 'may 21'):
+        if (date == 'may21'):
                 global may_no
                 global may_found
                 may_no = len(arr)
