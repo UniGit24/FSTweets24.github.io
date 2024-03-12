@@ -291,23 +291,24 @@ def initialiser (country):
     parseUSTopics = []
     f = open('bloomberg_quint_news (1).json',)
     data = json.load(f)
+    # list
     for i in data['news']:
         if "Australia" in i['title']:
-            if "June 2021" or "July 2021" or "August 2021" or "Septemebr 2021" or "October 2021" in i['date_created']:
+            if "June 2021" or "July 2021" or "January 2021" or "February 2021" or "March 2021" or "April 2021" in i['date_created']:
                 Australia_topics.append(i['title'])
                 Australia_dates.append(i['date_created'])
                 print(i['title'])
             else:
                 print(" ")
         if "U.S." in i['title']:
-            if "June 2021" or "July 2021" or "August 2021" or "Septemebr 2021" or "October 2021" in i['date_created']:
+            if "June 2021" or "July 2021" or "January 2021" or "February 2021" or "March 2021" or "April 2021" in i['date_created']:
                 US_topics.append(i['title'])
                 US_dates.append(i['date_created'])
                 print(i['title'])
             else:
                 print(" ")
         if "Canada" in i['title']:
-            if "June 2021" or "July 2021" or "August 2021" or "Septemebr 2021" or "October 2021" in i['date_created']:
+            if "June 2021" or "July 2021" or "January 2021" or "February 2021" or "March 2021" or "April 2021" in i['date_created']:
                 Canada_topics.append(i['title'])
                 Canada_dates.append(i['date_created'])
                 print(i['title'])
@@ -444,12 +445,12 @@ def initialiser (country):
                 numbers = re.findall(r'\d+', date)
                 if numbers:
                     date_numbers.append(int(numbers[0]))
-            print(date_numbers)
+                print(date_numbers)
 
             print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
             List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
             print(List)
-            with open('FINALAUS2.csv', 'a', newline = '') as f_object:
+            with open('FINALAUS1.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
             f_object.close()  

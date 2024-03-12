@@ -1,0 +1,20 @@
+import re
+import csv
+
+date_list = ["24/jun", "23/jun", "4/jun"]
+date_numbers = []
+
+for date in date_list:
+    numbers = re.findall(r'\d+', date)
+    if numbers:
+        date_numbers.append(int(numbers[0]))
+    print(date_numbers)
+
+print(date_numbers)
+List = [date_numbers]
+print(List)
+
+with open('FINALAUS1.csv', 'a', newline = '') as f_object:
+    writer_object = csv.writer(f_object)
+    writer_object.writerow(List)
+f_object.close()  
