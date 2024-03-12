@@ -30,6 +30,14 @@ mar_found = 0
 apr_found = 0
 may_found = 0
 new_date = []
+june_hash = 0
+july_hash = 0
+jan_hash = 0
+feb_hash = 0
+mar_hash = 0
+apr_hash = 0
+may_hash = 0
+
 
 def find_most_common_hashtags(texts):
     hashtags = []
@@ -118,7 +126,7 @@ def main(country, topic, date, arr, lon, lat,created_date):
 
     texts_list = [str(item) for item in new_arr]
     most_common_hashtags = find_most_common_hashtags(texts_list)
-
+    hashtagcount = 0
     for hashtag, count in most_common_hashtags:
         if count >= 2:
             for index, element in enumerate(arr):
@@ -132,6 +140,7 @@ def main(country, topic, date, arr, lon, lat,created_date):
                     items_list = list(lon.items())
                     new_lon.append(items_list[index])
                     new_score.append(((80-75)*5))
+                    hashtagcount = hashtagcount + 1
 
     d = {"text": [item[1] for item in new_arr], "lat": [item[1] for item in new_lat], "lon": [item[1] for item in new_lon],"score": new_score}
     totalcount = 0
@@ -157,38 +166,52 @@ def main(country, topic, date, arr, lon, lat,created_date):
         if (date == 'jun 21'):
                 global june_no
                 global june_found
+                global june_hash
+                june_hash = hashtagcount
                 june_no = len(arr)
                 june_found = totalcount
         if (date == 'jul 21'):
                 global july_no
                 global july_found
+                global june_hash
+                june_hash = hashtagcount
                 july_no = len(arr)
                 july_found = totalcount
         if (date == 'jan 21'):
                 global jan_no
                 global jan_found
+                global jan_hash
+                jan_hash = hashtagcount
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
         if (date == 'feb21'):
                 global feb_no
                 global feb_found
+                global feb_hash
+                feb_hash = hashtagcount
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
         if (date == 'mar21'):
                 global mar_no
                 global mar_found
+                global mar_hash
+                mar_hash = hashtagcount
                 mar_no = len(arr)
                 mar_found = totalcount
         if (date == 'apr21'):
                 global apr_no
                 global apr_found
+                global apr_hash
+                apr_hash = hashtagcount
                 apr_no = len(arr)
                 apr_found = totalcount        
         if (date == 'may21'):
                 global may_no
                 global may_found
+                global may_hash
+                may_hash = hashtagcount
                 may_no = len(arr)
                 may_found = totalcount
     if (country == 'Canada'):   
@@ -199,38 +222,52 @@ def main(country, topic, date, arr, lon, lat,created_date):
         if (date == 'jun 21'):
                 june_no
                 june_found
+                june_hash
+                june_hash = hashtagcount
                 june_no = len(arr)
                 june_found = totalcount
         if (date == 'jul 21'):
                 july_no
                 july_found
+                july_hash
+                july_hash = hashtagcount
                 july_no = len(arr)
                 july_found = totalcount
         if (date == 'jan 21'):
                 jan_no
                 jan_found
+                jan_hash
+                jan_hash = hashtagcount
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
         if (date == 'feb21'):
                 feb_no
                 feb_found
+                feb_hash
+                feb_hash = hashtagcount
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
         if (date == 'mar21'):
                 mar_no
                 mar_found
+                mar_hash
+                mar_hash = hashtagcount
                 mar_no = len(arr)
                 mar_found = totalcount
         if (date == 'apr21'):
                 apr_no
                 apr_found
+                apr_hash
+                apr_hash = hashtagcount
                 apr_no = len(arr)
                 apr_found = totalcount        
         if (date == 'may21'):
                 may_no
                 may_found
+                may_hash
+                may_hash = hashtagcount
                 may_no = len(arr)
                 may_found = totalcount
     if (country == 'United States'):   
@@ -241,38 +278,52 @@ def main(country, topic, date, arr, lon, lat,created_date):
         if (date == 'jun 21'):
                 june_no
                 june_found
+                june_hash
+                june_hash = hashtagcount
                 june_no = len(arr)
                 june_found = totalcount
         if (date == 'jul 21'):
                 july_no
                 july_found
+                july_hash
+                july_hash = hashtagcount
                 july_no = len(arr)
                 july_found = totalcount
         if (date == 'jan 21'):
                 jan_no
                 jan_found
+                jan_hash
+                jan_hash = hashtagcount
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
         if (date == 'feb21'):
                 feb_no
                 feb_found
+                feb_hash
+                feb_hash = hashtagcount
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
         if (date == 'mar21'):
                 mar_no
                 mar_found
+                mar_hash
+                mar_hash = hashtagcount
                 mar_no = len(arr)
                 mar_found = totalcount
         if (date == 'apr21'):
                 apr_no
                 apr_found
+                apr_hash
+                apr_hash = hashtagcount
                 apr_no = len(arr)
                 apr_found = totalcount        
         if (date == 'may21'):
                 may_no
                 may_found
+                may_hash
+                may_hash = hashtagcount
                 may_no = len(arr)
                 may_found = totalcount
     fig.show()
@@ -446,8 +497,8 @@ def initialiser (country):
                     date_numbers.append(int(numbers[0]))
             print(date_numbers)
 
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
-            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash]
             print(List)
             with open('FINALAUS2.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
@@ -577,9 +628,9 @@ def initialiser (country):
                 if numbers:
                     date_numbers.append(int(numbers[0]))
                 print(date_numbers)
-
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
-            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash]
+            print(List)
             with open('FINALCAN1.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
@@ -708,8 +759,9 @@ def initialiser (country):
                     date_numbers.append(int(numbers[0]))
                 print(date_numbers)
 
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
-            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash]
+            print(List)
             with open('FINALUS1.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
