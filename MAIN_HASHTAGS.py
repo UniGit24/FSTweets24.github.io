@@ -150,10 +150,10 @@ def main(country, topic, date, arr, lon, lat,created_date):
                     hashtagcount = hashtagcount + 1
 
     date_numbers = []
-    for date in new_date:
-        numbers = re.findall(r'\d+', date)
-        if numbers:
-            date_numbers.append(int(numbers[0]))
+    for item in new_date:
+        match = re.match(r'(\d{2})/', item[1])  
+        if match:
+            date_numbers.append(int(match.group(1)))  
     print(date_numbers)
 
     d = {"text": [item[1] for item in new_arr], "lat": [item[1] for item in new_lat], "lon": [item[1] for item in new_lon],"score": new_score}

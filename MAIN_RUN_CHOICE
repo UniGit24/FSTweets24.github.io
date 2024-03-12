@@ -29,7 +29,21 @@ feb_found = 0
 mar_found = 0
 apr_found = 0
 may_found = 0
-new_date = []
+june_hash = 0
+july_hash = 0
+jan_hash = 0
+feb_hash = 0
+mar_hash = 0
+apr_hash = 0
+may_hash = 0
+june_dates = []
+july_dates = []
+jan_dates = []
+feb_dates = []
+mar_dates = []
+apr_dates = []
+may_dates = []
+
 
 def find_most_common_hashtags(texts):
     hashtags = []
@@ -70,6 +84,7 @@ def main(country, topic, date, arr, lon, lat,created_date):
     new_score = []
     temp_no_scores = 0
     maintweets = 0
+    new_date = []
     for index, x in enumerate(arr, start=1): 
         tweet = x
         try:
@@ -118,7 +133,7 @@ def main(country, topic, date, arr, lon, lat,created_date):
 
     texts_list = [str(item) for item in new_arr]
     most_common_hashtags = find_most_common_hashtags(texts_list)
-
+    hashtagcount = 0
     for hashtag, count in most_common_hashtags:
         if count >= 2:
             for index, element in enumerate(arr):
@@ -132,6 +147,14 @@ def main(country, topic, date, arr, lon, lat,created_date):
                     items_list = list(lon.items())
                     new_lon.append(items_list[index])
                     new_score.append(((80-75)*5))
+                    hashtagcount = hashtagcount + 1
+
+    date_numbers = []
+    for item in new_date:
+        match = re.match(r'(\d{2})/', item[1])  
+        if match:
+            date_numbers.append(int(match.group(1)))  
+    print(date_numbers)
 
     d = {"text": [item[1] for item in new_arr], "lat": [item[1] for item in new_lat], "lon": [item[1] for item in new_lon],"score": new_score}
     totalcount = 0
@@ -157,38 +180,66 @@ def main(country, topic, date, arr, lon, lat,created_date):
         if (date == 'jun 21'):
                 global june_no
                 global june_found
+                global june_hash
+                global june_dates
+                june_dates = date_numbers
+                june_hash = hashtagcount
                 june_no = len(arr)
                 june_found = totalcount
         if (date == 'jul 21'):
                 global july_no
                 global july_found
+                global july_hash
+                global july_dates
+                july_dates = date_numbers
+                july_hash = hashtagcount
                 july_no = len(arr)
                 july_found = totalcount
         if (date == 'jan 21'):
                 global jan_no
                 global jan_found
+                global jan_hash
+                global jan_dates
+                jan_dates = date_numbers
+                jan_hash = hashtagcount
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
         if (date == 'feb21'):
                 global feb_no
                 global feb_found
+                global feb_hash
+                global feb_dates
+                feb_dates = date_numbers
+                feb_hash = hashtagcount
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
         if (date == 'mar21'):
                 global mar_no
                 global mar_found
+                global mar_hash
+                global mar_dates
+                mar_dates = date_numbers
+                mar_hash = hashtagcount
                 mar_no = len(arr)
                 mar_found = totalcount
         if (date == 'apr21'):
                 global apr_no
                 global apr_found
+                global apr_hash
+                global apr_dates
+                apr_dates = date_numbers
+                apr_hash = hashtagcount
                 apr_no = len(arr)
                 apr_found = totalcount        
         if (date == 'may21'):
                 global may_no
                 global may_found
+                global may_hash
+                global may_dates
+                may_dates = date_numbers
+                may_hash = hashtagcount
                 may_no = len(arr)
                 may_found = totalcount
     if (country == 'Canada'):   
@@ -199,38 +250,66 @@ def main(country, topic, date, arr, lon, lat,created_date):
         if (date == 'jun 21'):
                 june_no
                 june_found
+                june_hash
+                june_dates
+                june_dates = date_numbers
+                june_hash = hashtagcount
                 june_no = len(arr)
                 june_found = totalcount
         if (date == 'jul 21'):
                 july_no
                 july_found
+                july_hash
+                july_dates
+                july_dates = date_numbers
+                july_hash = hashtagcount
                 july_no = len(arr)
                 july_found = totalcount
         if (date == 'jan 21'):
                 jan_no
                 jan_found
+                jan_hash
+                jan_dates
+                jan_dates = date_numbers
+                jan_hash = hashtagcount
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
         if (date == 'feb21'):
                 feb_no
                 feb_found
+                feb_hash
+                feb_dates
+                feb_dates = date_numbers
+                feb_hash = hashtagcount
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
         if (date == 'mar21'):
                 mar_no
                 mar_found
+                mar_hash
+                mar_dates
+                mar_dates = date_numbers
+                mar_hash = hashtagcount
                 mar_no = len(arr)
                 mar_found = totalcount
         if (date == 'apr21'):
                 apr_no
                 apr_found
+                apr_hash
+                apr_dates
+                apr_dates = date_numbers
+                apr_hash = hashtagcount
                 apr_no = len(arr)
                 apr_found = totalcount        
         if (date == 'may21'):
                 may_no
                 may_found
+                may_hash
+                may_dates
+                may_dates = date_numbers
+                may_hash = hashtagcount
                 may_no = len(arr)
                 may_found = totalcount
     if (country == 'United States'):   
@@ -241,38 +320,66 @@ def main(country, topic, date, arr, lon, lat,created_date):
         if (date == 'jun 21'):
                 june_no
                 june_found
+                june_hash
+                june_dates
+                june_dates = date_numbers
+                june_hash = hashtagcount
                 june_no = len(arr)
                 june_found = totalcount
         if (date == 'jul 21'):
                 july_no
                 july_found
+                july_hash
+                july_dates
+                july_dates = date_numbers
+                july_hash = hashtagcount
                 july_no = len(arr)
                 july_found = totalcount
         if (date == 'jan 21'):
                 jan_no
                 jan_found
+                jan_hash
+                jan_dates
+                jan_dates = date_numbers
+                jan_hash = hashtagcount
                 jan_no = len(arr)
                 jan_found = totalcount
                 print(jan_found,jan_no)
         if (date == 'feb21'):
                 feb_no
                 feb_found
+                feb_hash
+                feb_dates
+                feb_dates = date_numbers
+                feb_hash = hashtagcount
                 feb_no = len(arr)
                 feb_found = totalcount
                 print(feb_found,feb_no)
         if (date == 'mar21'):
                 mar_no
                 mar_found
+                mar_hash
+                mar_dates
+                mar_dates = date_numbers
+                mar_hash = hashtagcount
                 mar_no = len(arr)
                 mar_found = totalcount
         if (date == 'apr21'):
                 apr_no
                 apr_found
+                apr_hash
+                apr_dates
+                apr_dates = date_numbers
+                apr_hash = hashtagcount
                 apr_no = len(arr)
                 apr_found = totalcount        
         if (date == 'may21'):
                 may_no
                 may_found
+                may_hash
+                may_dates
+                may_dates = date_numbers
+                may_hash = hashtagcount
                 may_no = len(arr)
                 may_found = totalcount
     fig.show()
@@ -282,48 +389,14 @@ def main(country, topic, date, arr, lon, lat,created_date):
 def initialiser (country):
     Australia_topics = []
     Australia_dates = []
-    parseAustraliaTopics = []
+    parseAustraliaTopics = ["Australia‚Äôs Budget to Include A$1.7 Billion for Childcare02 May 2021, 7:31 AM IST", "Unlikely Trade in Japan Bonds Gets Revived by Australian Funds06 May 2021, 11:37 AM IST","KKR-Backed Pepper Money Expands Australia‚Äôs Biggest IPO of 202106 May 2021, 11:34 AM IST","Australia‚Äôs Budget Position to Be¬†25% Better Off Than December Estimate:¬†Economists06 May 2021, 9:51 AM IST","Australia May Not Open Border Until Late 2022, Minister Says07 May 2021, 5:25 AM IST","Australia to Resume Repatriation Flights From India on May 1507 May 2021, 5:13 AM IST","China Halts Australia Economic Dialogue in New Retaliation06 May 2021, 8:25 AM IST","Australia‚Äôs Battered Morrison Bets on Budget to Repair Image07 May 2021, 12:30 AM IST","ANZ CEO Not Ruling Out Purchase of Citi Australia Retail Assets05 May 2021, 5:42 AM IST","Sanjeev Gupta‚Äôs Australian Operations Signs New Funding to Keep Running05 May 2021, 12:01 PM IST","National Australia Bank Profit Surges on Economic Recovery06 May 2021, 3:37 AM IST","IPOs Boom at the Fastest Pace Since 2007 in Australia04 May 2021, 11:34 AM IST","Australia Central Bank Lifts Outlook, to Review YCC in July04 May 2021, 10:08 AM IST","Australia Net Exports to Drag on First Quarter GDP, Capital Says04 May 2021, 8:03 AM IST","Australia Budget Deficit to Narrow Sharply, Westpac‚Äôs Evans Says04 May 2021, 12:37 PM IST","ANZ Bank Profit Rises as Australia‚Äôs Economic Rebound Builds05 May 2021, 3:33 AM IST","Australia Probe of China Port Signals Trouble for Beijing04 May 2021, 6:11 AM IST","Australia‚Äôs Housing Boom Shows Signs of Slowing03 May 2021, 5:30 AM IST","Australia Is Reviewing China‚Äôs Ownership of a Darwin Port03 May 2021, 5:40 AM IST","Australia Defends Ban on Citizens Returning From Virus-Hit India03 May 2021, 8:16 AM IST","Bitcoin Miner Iris Is Said to Weigh Australia‚Äôs First SPAC Deal04 May 2021, 12:30 AM IST","Morrison‚Äôs Liberals Claim Victory in Australian State¬†Election02 May 2021, 10:42 AM IST","Australia Budget Deficit to Be A$167 Billion This Year: Deloitte02 May 2021, 7:31 PM IST"]
     Canada_topics = []
     Canada_dates = []
     parseCanadaTopics = []
     US_topics = []
     US_dates = []
     parseUSTopics = []
-    f = open('bloomberg_quint_news (1).json',)
-    data = json.load(f)
-    # list
-    for i in data['news']:
-        if "Australia" in i['title']:
-            if "June 2021" or "July 2021" or "January 2021" or "February 2021" or "March 2021" or "April 2021" in i['date_created']:
-                Australia_topics.append(i['title'])
-                Australia_dates.append(i['date_created'])
-                print(i['title'])
-            else:
-                print(" ")
-        if "U.S." in i['title']:
-            if "June 2021" or "July 2021" or "January 2021" or "February 2021" or "March 2021" or "April 2021" in i['date_created']:
-                US_topics.append(i['title'])
-                US_dates.append(i['date_created'])
-                print(i['title'])
-            else:
-                print(" ")
-        if "Canada" in i['title']:
-            if "June 2021" or "July 2021" or "January 2021" or "February 2021" or "March 2021" or "April 2021" in i['date_created']:
-                Canada_topics.append(i['title'])
-                Canada_dates.append(i['date_created'])
-                print(i['title'])
-            else:
-                print(" ")
-    f.close()
-    for index, x in enumerate(Australia_topics, start=0): 
-        y = str(x + str(Australia_dates[index]))
-        parseAustraliaTopics.append(y)
-    for index, x in enumerate(Canada_topics, start=0): 
-        y = str(x + str(Canada_dates[index]))
-        parseCanadaTopics.append(y)
-    for index, x in enumerate(US_topics, start=0): 
-        y = str(x + str(US_dates[index]))
-        parseUSTopics.append(y)
+
     if (country == 'Australia'): 
         for topic in parseAustraliaTopics:
             jan21 = []
@@ -440,17 +513,10 @@ def initialiser (country):
             else:
                 may_percent = 0
 
-            date_numbers = []
-            for date in new_date:
-                numbers = re.findall(r'\d+', date)
-                if numbers:
-                    date_numbers.append(int(numbers[0]))
-                print(date_numbers)
-
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
-            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash, jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash,  jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates]
             print(List)
-            with open('FINALAUS1.csv', 'a', newline = '') as f_object:
+            with open('FINALAUS2.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
             f_object.close()  
@@ -572,15 +638,9 @@ def initialiser (country):
             else:
                 may_percent = 0
 
-            date_numbers = []
-            for date in new_date:
-                numbers = re.findall(r'\d+', date)
-                if numbers:
-                    date_numbers.append(int(numbers[0]))
-                print(date_numbers)
-
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
-            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash, jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash,  jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates]
+            print(List)
             with open('FINALCAN1.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
@@ -702,15 +762,10 @@ def initialiser (country):
             else:
                 may_percent = 0
 
-            date_numbers = []
-            for date in new_date:
-                numbers = re.findall(r'\d+', date)
-                if numbers:
-                    date_numbers.append(int(numbers[0]))
-                print(date_numbers)
+            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash, jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates)
+            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash,  jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates]
+            print(List)
 
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers)
-            List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, date_numbers]
             with open('FINALUS1.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
@@ -719,25 +774,4 @@ def initialiser (country):
 
 
 
-
-app = Tk() 
-app.geometry("600x400") 
-
-def clear(): 
-	combo.set('') 
-        
-def get_index(*arg): 
-    
-    initialiser(str(var.get()))
-
-countries = ('Australia', 'Canada', 'United States')  
-
-var = StringVar() 
-combo = ttk.Combobox(app, textvariable=var) 
-combo['values'] = countries 
-combo['state'] = 'readonly'
-combo.pack(padx=5, pady=5) 
-
-button = Button(app, text="Next", command=get_index) 
-button.pack() 
-app.mainloop() 
+initialiser("Australia")
