@@ -389,13 +389,62 @@ def main(country, topic, date, arr, lon, lat,created_date):
 def initialiser (country):
     Australia_topics = []
     Australia_dates = []
-    parseAustraliaTopics = ["Australia‚Äôs Budget to Include A$1.7 Billion for Childcare02 May 2021, 7:31 AM IST", "Unlikely Trade in Japan Bonds Gets Revived by Australian Funds06 May 2021, 11:37 AM IST","KKR-Backed Pepper Money Expands Australia‚Äôs Biggest IPO of 202106 May 2021, 11:34 AM IST","Australia‚Äôs Budget Position to Be¬†25% Better Off Than December Estimate:¬†Economists06 May 2021, 9:51 AM IST","Australia May Not Open Border Until Late 2022, Minister Says07 May 2021, 5:25 AM IST","Australia to Resume Repatriation Flights From India on May 1507 May 2021, 5:13 AM IST","China Halts Australia Economic Dialogue in New Retaliation06 May 2021, 8:25 AM IST","Australia‚Äôs Battered Morrison Bets on Budget to Repair Image07 May 2021, 12:30 AM IST","ANZ CEO Not Ruling Out Purchase of Citi Australia Retail Assets05 May 2021, 5:42 AM IST","Sanjeev Gupta‚Äôs Australian Operations Signs New Funding to Keep Running05 May 2021, 12:01 PM IST","National Australia Bank Profit Surges on Economic Recovery06 May 2021, 3:37 AM IST","IPOs Boom at the Fastest Pace Since 2007 in Australia04 May 2021, 11:34 AM IST","Australia Central Bank Lifts Outlook, to Review YCC in July04 May 2021, 10:08 AM IST","Australia Net Exports to Drag on First Quarter GDP, Capital Says04 May 2021, 8:03 AM IST","Australia Budget Deficit to Narrow Sharply, Westpac‚Äôs Evans Says04 May 2021, 12:37 PM IST","ANZ Bank Profit Rises as Australia‚Äôs Economic Rebound Builds05 May 2021, 3:33 AM IST","Australia Probe of China Port Signals Trouble for Beijing04 May 2021, 6:11 AM IST","Australia‚Äôs Housing Boom Shows Signs of Slowing03 May 2021, 5:30 AM IST","Australia Is Reviewing China‚Äôs Ownership of a Darwin Port03 May 2021, 5:40 AM IST","Australia Defends Ban on Citizens Returning From Virus-Hit India03 May 2021, 8:16 AM IST","Bitcoin Miner Iris Is Said to Weigh Australia‚Äôs First SPAC Deal04 May 2021, 12:30 AM IST","Morrison‚Äôs Liberals Claim Victory in Australian State¬†Election02 May 2021, 10:42 AM IST","Australia Budget Deficit to Be A$167 Billion This Year: Deloitte02 May 2021, 7:31 PM IST"]
+    parseAustraliaTopics = ["Unlikely Trade in Japan Bonds Gets Revived by Australian Funds06 May 2021, 11:37 AM IST","KKR-Backed Pepper Money Expands Australia‚Äôs Biggest IPO of 202106 May 2021, 11:34 AM IST","Australia‚Äôs Budget Position to Be¬†25% Better Off Than December Estimate:¬†Economists06 May 2021, 9:51 AM IST","Australia May Not Open Border Until Late 2022, Minister Says07 May 2021, 5:25 AM IST","Australia to Resume Repatriation Flights From India on May 1507 May 2021, 5:13 AM IST","China Halts Australia Economic Dialogue in New Retaliation06 May 2021, 8:25 AM IST","Australia‚Äôs Battered Morrison Bets on Budget to Repair Image07 May 2021, 12:30 AM IST","ANZ CEO Not Ruling Out Purchase of Citi Australia Retail Assets05 May 2021, 5:42 AM IST","Sanjeev Gupta‚Äôs Australian Operations Signs New Funding to Keep Running05 May 2021, 12:01 PM IST","National Australia Bank Profit Surges on Economic Recovery06 May 2021, 3:37 AM IST","IPOs Boom at the Fastest Pace Since 2007 in Australia04 May 2021, 11:34 AM IST","Australia Central Bank Lifts Outlook, to Review YCC in July04 May 2021, 10:08 AM IST","Australia Net Exports to Drag on First Quarter GDP, Capital Says04 May 2021, 8:03 AM IST","Australia Budget Deficit to Narrow Sharply, Westpac‚Äôs Evans Says04 May 2021, 12:37 PM IST","ANZ Bank Profit Rises as Australia‚Äôs Economic Rebound Builds05 May 2021, 3:33 AM IST","Australia Probe of China Port Signals Trouble for Beijing04 May 2021, 6:11 AM IST","Australia‚Äôs Housing Boom Shows Signs of Slowing03 May 2021, 5:30 AM IST","Australia Is Reviewing China‚Äôs Ownership of a Darwin Port03 May 2021, 5:40 AM IST","Australia Defends Ban on Citizens Returning From Virus-Hit India03 May 2021, 8:16 AM IST","Bitcoin Miner Iris Is Said to Weigh Australia‚Äôs First SPAC Deal04 May 2021, 12:30 AM IST","Morrison‚Äôs Liberals Claim Victory in Australian State¬†Election02 May 2021, 10:42 AM IST","Australia Budget Deficit to Be A$167 Billion This Year: Deloitte02 May 2021, 7:31 PM IST"]
     Canada_topics = []
     Canada_dates = []
-    parseCanadaTopics = []
+    parseCanadaTopics = ["Fresh Lockdowns Create Pothole on Canada’s Road to Jobs Recovery06 May 2021, 7:03 PM IST","Canada Approves Pfizer Covid Shot for Adolescents05 May 2021, 8:42 PM IST","Canada’s Vaccine Push Plagued by Confusion, Erratic Supply06 May 2021, 2:15 AM IST","Suncor Sees Vaccines as Solution to Canada’s Lagging Oil Demand05 May 2021, 2:55 AM IST",
+        "Moderna Booster Effective; Canada May Mix Shots: Virus Update05 May 2021, 4:27 AM IST",
+        "Covid Outbreak Grips Canada Oil Sands Just as Roughnecks Fly In28 Apr 2021, 3:30 PM IST",
+        "Trudeau’s Finance Chief Says Spending Won’t Dent Canada’s Brand29 Apr 2021, 12:48 AM IST",
+        "Biden-Powell Duo, Canada’s Reputation, Supply Issues: Eco Day29 Apr 2021, 4:56 PM IST",
+        "Transat Rises as Canada Grants $570 Million in Crisis Loans29 Apr 2021, 4:59 PM IST",
+        "Frustration Builds on World’s Longest Border as Canada Goes Slow on Reopening26 Apr 2021, 6:01 PM IST",
+        "Canada Avoids Election With Lawmakers Backing Trudeau Budget27 Apr 2021, 4:53 AM IST",
+        "Hummingbirds Halt Work on Canada’s Biggest Oil Pipeline Project27 Apr 2021, 3:21 AM IST",
+        "Trudeau Hits Back Against Criticism of Canada as Climate Laggard27 Apr 2021, 6:30 PM IST",
+        "Macklem Stresses Bank of Canada’s Commitment to 2% Inflation28 Apr 2021, 3:38 AM IST",
+        "Australia’s Stimulus Debate Gets a Jolt From Canada’s Taper22 Apr 2021, 8:16 AM IST",
+        "Trudeau Vows to Speed Up Emissions Cuts for Canada, a G7 Laggard22 Apr 2021, 7:48 PM IST",
+        "Canada Bans Flights From Covid-Hit India, Pakistan for 30 Days23 Apr 2021, 3:21 AM IST",
+        "Capital Pains, Canada’s Global Warning, Policy Potency: Eco Day23 Apr 2021, 4:42 AM IST",
+        "Inflation Forces the Bank of Canada’s Hand Ahead of Fed and ECB23 Apr 2021, 1:28 AM IST",
+        "Bank of Canada’s More Hawkish Tone Is ‘Prudent,’ Vachon Says23 Apr 2021, 11:10 PM IST",
+        "National Bank CEO Floats Axing Blind Bids to Cool Canada Housing23 Apr 2021, 9:22 PM IST",
+        "Pharma Sector Check - Will U.S. FDA Follow Canada, U.K. In Recalling Losartan? Motilal Oswal23 Sep 2021, 10:32 AM IST",
+        "Retail Sales in Canada Rebound After Stalling in Early Summer23 Sep 2021, 6:16 PM IST",
+        "SNC-Lavalin Drops After Canada Police Lay Fraud, Forgery Charges23 Sep 2021, 8:04 PM IST",
+        "Real Estate Frenzy to Crest in 2021, Canada’s Housing Agency Says06 May 2021, 10:47 PM IST",
+        "Amazon Postpones Prime Day Sale in Canada, India Due to Covid-1907 May 2021, 2:19 AM IST",
+        "Canada’s Boralex Weighs Sale of Stake in French Unit23 Sep 2021, 2:06 PM IST"]
     US_topics = []
     US_dates = []
-    parseUSTopics = []
+    parseUSTopics = ["EU Ready to Discuss U.S. Plan to Waive Vaccine Patent Protection06 May 2021, 12:51 PM IST",
+                "McConnell Says U.S. Afghan Withdrawal Means Return of Taliban06 May 2021, 11:27 PM IST",
+                "China Must Be Responsible for Falling Rocket, U.S. Lawmaker Says07 May 2021, 12:43 AM IST",
+                "Norwegian Cruise CEO Rules Out July U.S. Start; Shares Drop06 May 2021, 8:55 PM IST",
+                "U.S. Mortgage Rates Slip to Lowest Level in Almost Three Months06 May 2021, 7:30 PM IST",
+                "Millions in Taliban Taxes Show Who’s in Charge as U.S. Departs26 Apr 2021, 3:30 PM IST",
+                "Harris Pledges $310 Million in Aid to Stem Crisis at U.S. Border27 Apr 2021, 5:17 AM IST",
+                "Strategists See Opportunity for Rotation Trades Amid U.S. Vaccine Success26 Apr 2021, 6:19 PM IST",
+                "Gain in U.S. Durables Orders Trails Forecast on Plane Bookings26 Apr 2021, 6:46 PM IST",
+                "U.S. Trade Chief Meets Pfizer, AstraZeneca About Vaccine Supply27 Apr 2021, 7:09 AM IST",
+                "U.S. Plastic Surgeons Expect Boom in Procedures Below Zoom Line27 Apr 2021, 5:35 PM IST",
+                "U.S. Price Rises, Biden’s Appeal, Fish Deal: Eco Day27 Apr 2021, 4:53 PM IST",
+                "Canadian Pot Producer Valens to Buy Florida Firm in U.S. Push27 Apr 2021, 3:30 PM IST",
+                "Consumer Confidence in U.S. Climbed in April to Pandemic High27 Apr 2021, 7:41 PM IST",
+                "U.S. Home Prices Surge Most Since 2006 With Tight Inventory27 Apr 2021, 6:30 PM IST",
+                "Corn Rally Gets Lift With U.S. Road Trips Stoking Biofuel Demand27 Apr 2021, 9:13 PM IST",
+                "France Demands More From EU on Growth as U.S., China Race Ahead27 Apr 2021, 6:38 PM IST",
+                "U.S. Missile Defense Warhead Program to Cost Almost $18 Billion27 Apr 2021, 9:59 PM IST",
+                "Nigerian President Asks for U.S. Support to Tackle Insecurity27 Apr 2021, 9:47 PM IST",
+                "U.S. College Enrollment Hits Two-Decade Low in 202027 Apr 2021, 11:25 PM IST",
+                "U.S. Investigating 2 New Clotting Cases Tied to J&J Vaccine27 Apr 2021, 7:40 PM IST",
+                "Lilly Cuts Forecast After U.S. Covid Drug Order Cancelled27 Apr 2021, 9:05 PM IST",
+                "Amazon to Pass Walmart in U.S. Retail Sales in 2025, Report Says27 Apr 2021, 5:30 PM IST",
+                "U.S. Truck Boom Shows Why Oil’s Demand Comeback Is Here to Stay27 Apr 2021, 3:30 PM IST",
+                "How the U.S. Taxes Estates and Heirs, and What May Change27 Apr 2021, 8:17 PM IST",
+                "France, Germany Support U.S. 21% Tax Plan for Corporations27 Apr 2021, 1:24 PM IST",
+                "France Plans Talks on U.S. Flights as It Trials Vaccine Passport27 Apr 2021, 5:24 PM IST"]
 
     if (country == 'Australia'): 
         for topic in parseAustraliaTopics:
@@ -641,7 +690,7 @@ def initialiser (country):
             print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash, jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates)
             List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash,  jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates]
             print(List)
-            with open('FINALCAN1.csv', 'a', newline = '') as f_object:
+            with open('FINALCAN2.csv', 'a', newline = '') as f_object:
                 writer_object = csv.writer(f_object)
                 writer_object.writerow(List)
             f_object.close() 
@@ -655,19 +704,19 @@ def initialiser (country):
             may21 = []
             jun21 = []
             jul21 = []
-            file = '2021_July_twitter_trending_data.csv' 
+            file = '2021_July_twitter_trending_dataus.csv' 
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
             df3 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            file = '2021_June_twitter_trending_data.csv'
+            file = '2021_June_twitter_trending_dataus.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
             df4 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            file = '2021_September_twitter_trending_data.csv'
+            file = '2021_September_twitter_trending_dataus.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
             df5 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
-            file = '2021_October_twitter_trending_data.csv'
+            file = '2021_October_twitter_trending_dataus.csv'
             df = pd.read_csv(file)
             df2 = df[df['searched_hashtag_country'] == country] 
             df6 = df2[["searched_hashtag_country","tweet_text","latitude","longitude","user_created_datetime"]]
@@ -774,4 +823,4 @@ def initialiser (country):
 
 
 
-initialiser("Australia")
+initialiser("United States")

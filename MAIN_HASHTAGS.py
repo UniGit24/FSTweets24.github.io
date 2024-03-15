@@ -430,6 +430,7 @@ def initialiser (country):
     for index, x in enumerate(US_topics, start=0): 
         y = str(x + str(US_dates[index]))
         parseUSTopics.append(y)
+        print(y)
     if (country == 'Australia'): 
         for topic in parseAustraliaTopics:
             jan21 = []
