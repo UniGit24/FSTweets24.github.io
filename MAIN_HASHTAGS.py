@@ -547,7 +547,7 @@ def initialiser (country):
             else:
                 may_percent = 0
 
-            print(country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash, jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates)
+            print(S)
             List = [country, topic, jan_found, jan_no, jan_percent,feb_found, feb_no, feb_percent,mar_found, mar_no, mar_percent, apr_found, apr_no, apr_percent,may_found, may_no,  may_percent, june_found, june_no, june_percent,july_found, july_no, july_percent, jan_hash, feb_hash, mar_hash, apr_hash, june_hash, july_hash,  jan_dates,feb_dates, mar_dates,apr_dates,may_dates,june_dates,july_dates]
             print(List)
             with open('FINALAUS2.csv', 'a', newline = '') as f_object:
