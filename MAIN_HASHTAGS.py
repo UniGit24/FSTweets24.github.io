@@ -65,13 +65,11 @@ def detector(topic,tweet):
     tokenizer = AutoTokenizer.from_pretrained("thenlper/gte-large")
     model = AutoModel.from_pretrained("thenlper/gte-large")
 
-    # Tokenize the input texts
     batch_dict = tokenizer(input_texts, max_length=512, padding=True, truncation=True, return_tensors='pt')
 
     outputs = model(**batch_dict)
     embeddings = average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
 
-    # (Optionally) normalize embeddings
     embeddings = F.normalize(embeddings, p=2, dim=1)
     scores = (embeddings[:1] @ embeddings[1:].T) * 100
     return (scores)
